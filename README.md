@@ -9,42 +9,42 @@ This is a class project of ECE 495/595: Web Architecture and Cloud Computing
 ## Clone the repo
 
 ### Clone main repo
-'''
+```
 git clone https://github.com/vamshins/apr-actionplan.git
-'''
+```
 
 ### Clone your forked repo
-'''
+```
 git clone https://github.com/<username>/apr-actionplan.git
-'''
+```
 This is the repository you have to use to push your updated code/documents. Once pushed, submit a pull request to the project owner.
 
 ## Migrate DB
 Navigate to cloned folder in your system.
-'''
+```
 rake db:migrate
-'''
+```
 
 ## Get status of migration
-'''
+```
 rake db:migrate:status
-'''
+```
 
 ## DB Reset
-'''
+```
 rake db:reset
-'''
+```
 
 ## Revert to a particular migration
-'''
+```
 rake db:migrate VERSION=<migration_timestamp>
-'''
+```
 Ex: 20080906120000
 
 ## Run project
-'''
+```
 rails s
-'''
+```
 
 
 # Milestones of the Project
