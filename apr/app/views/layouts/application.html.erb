@@ -9,7 +9,7 @@
 </head>
 <body>
 <div id="logged-in">
-  Signed in as <SPAN id="top-username"> session[:cas_user] </SPAN>. Not you?
+  Signed in as <SPAN id="top-username"> <%= session[:cas_user] %></SPAN>. Not you?
   <a href="/logout">Sign out</a>
 </div>
 <div id="wrapper">
@@ -18,10 +18,10 @@
       <img src="/assets/banner.jpg" />
     </div>
     <div id="navigation">
-      <% if session[:cas_user].to_s == User.find_by_username(session[:cas_user].to_s) || User.find_by_username(session[:cas_user].to_s).role.to_s == "Admin" then %>
+      <% if session[:cas_user].to_s == User.find_by_username(session[:cas_user].to_s) && User.find_by_username(session[:cas_user].to_s).role.to_s == "Admin" then %>
         <ul>
-          <li><a href="/admin_dash/">Home </a></li>
-          <li><a href="/apr_reports">APR Reports</a></li>
+          <li><%= link_to("Home", home_index_path) %></li>
+          <li><%= link_to("APR Reports", action_plan_path) %></li>
           <li><a href="/criterions/">Criteria</a></li>
           <li><a href="/admin/users/">Users</a></li>
           <li><a href="/user_roles/">Roles</a></li>
@@ -31,8 +31,8 @@
         </ul>
       <% else %>
         <ul>
-          <li><a href="/admin_dash/">Home </a></li>
-          <li><a href="/apr_reports">APR Reports</a></li>
+          <li><%= link_to("Home", home_index_path) %></li>
+          <li><%= link_to("APR Reports", action_plans_path) %></li>
           <li><a href="/criterions/">Criteria</a></li>
         </ul>
       <% end %>

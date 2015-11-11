@@ -13,23 +13,31 @@
 
   <div class="field">
     <%= f.label :unit %><br>
-    <%= f.text_field :unit %>
+    <%# f.text_field :unit %>
+    <%= f.collection_select :unit_id, Unit.all, :id, :unit, prompt: true %>
   </div>
   <div class="field">
     <%= f.label :date_of_site_visit %><br>
     <%= f.date_select :date_of_site_visit %>
   </div>
   <div class="field">
-    <%= f.label :submission_or_update %><br>
-    <%= f.text_field :submission_or_update %>
+    <%= f.label :submission_or_update %><br />
+    <%= f.label :submission_or_update, "Submission", :value => "submission"  %>
+    <%= f.radio_button :submission_or_update, "Submission", {:checked => true} %>
+    <%= f.label :submission_or_update, "Update", :value => "update" %>
+    <%= f.radio_button :submission_or_update, "Update" %>
   </div>
   <div class="field">
     <%= f.label :submission_or_update_date %><br>
     <%= f.date_select :submission_or_update_date %>
   </div>
   <div class="field">
-    <%= f.label :submitter_name %><br>
-    <%= f.text_field :submitter_name %>
+    <%= f.label :submitter_first_name %><br>
+    <%= f.text_field :submitter_first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :submitter_last_name %><br>
+    <%= f.text_field :submitter_last_name %>
   </div>
   <div class="field">
     <%= f.label :submitter_title %><br>
