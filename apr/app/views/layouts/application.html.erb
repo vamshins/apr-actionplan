@@ -4,11 +4,38 @@
   <title>Apr</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'home', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="logged-in">
+  Signed in as <SPAN id="top-username"> test </SPAN>. Not you?
+  <a href="/logout">Sign out</a>
+</div>
+<div id="wrapper">
+  <div id="head">
+    <div id="banner">
+      <img src="/assets/banner.jpg" />
+    </div>
+    <div id="navigation">
+      <ul>
+        <li><a href="/admin_dash/">Home </a></li>
+        <li><a href="/apr_reports">APR Reports</a></li>
+        <li><a href="/criterions/">Criteria</a></li>
+        <li><a href="/sections/">Sections</a></li>
+        <li><a href="/admin/users/">Users</a></li>
+        <li><a href="/user_roles/">Roles</a></li>
+        <li><a href="/units/">Units</a></li>
+        <li><a href="/colleges/">Colleges</a></li>
+        <li><a href="/milestones/">Milestones</a></li>
+      </ul>
+      <br class="clear"/>
+    </div>
 
-<%= yield %>
-
+    <div id="content">
+      <%= yield %>
+    </div>
+  </div>
+</div>
 </body>
 </html>
