@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :action_plans
   root 'home#index'
 
   get 'home/index'
