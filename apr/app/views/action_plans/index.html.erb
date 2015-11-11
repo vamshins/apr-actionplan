@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p class="link-position-right"><%= link_to("Create New APR Report", new_action_plan_path) %></p>
+
+<br>
+<br>
+
+<h1>Listing Action Plans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Unit</th>
+      <th>Date of site visit</th>
+      <th>Submission or update</th>
+      <th>Submission or update date</th>
+      <th>Submitter name</th>
+      <th>Submitter title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if session[:cas_user].to_s != "" %>
+    <% @action_plans.each do |action_plan| %>
+      <tr>
+        <% if action_plan.unit_id != nil %>
+          <td><%= Unit.find(action_plan.unit_id).unit %></td>
+          <td><%= action_plan.date_of_site_visit %></td>
+          <td><%= action_plan.submission_or_update %></td>
+          <td><%= action_plan.submission_or_update_date %></td>
+          <td><%= action_plan.submitter_first_name %>, <%= action_plan.submitter_last_name %></td>
+          <td><%= action_plan.submitter_title %></td>
+          <td><%= link_to 'Show', action_plan %></td>
+          <td><%= link_to 'Edit', edit_action_plan_path(action_plan) %></td>
+          <td><%= link_to 'Destroy', action_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>

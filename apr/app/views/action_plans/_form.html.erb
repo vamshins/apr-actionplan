@@ -1,0 +1,49 @@
+<%= form_for(@action_plan) do |f| %>
+  <% if @action_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@action_plan.errors.count, "error") %> prohibited this action_plan from being saved:</h2>
+
+      <ul>
+      <% @action_plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :unit %><br>
+    <%# f.text_field :unit %>
+    <%= f.collection_select :unit_id, Unit.all, :id, :unit, prompt: true %>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_site_visit %><br>
+    <%= f.date_select :date_of_site_visit %>
+  </div>
+  <div class="field">
+    <%= f.label :submission_or_update %><br />
+    <%= f.label :submission_or_update, "Submission", :value => "submission"  %>
+    <%= f.radio_button :submission_or_update, "Submission", {:checked => true} %>
+    <%= f.label :submission_or_update, "Update", :value => "update" %>
+    <%= f.radio_button :submission_or_update, "Update" %>
+  </div>
+  <div class="field">
+    <%= f.label :submission_or_update_date %><br>
+    <%= f.date_select :submission_or_update_date %>
+  </div>
+  <div class="field">
+    <%= f.label :submitter_first_name %><br>
+    <%= f.text_field :submitter_first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :submitter_last_name %><br>
+    <%= f.text_field :submitter_last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :submitter_title %><br>
+    <%= f.text_field :submitter_title %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

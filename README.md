@@ -25,6 +25,16 @@ Navigate to cloned folder in your system.
 rake db:migrate
 ```
 
+## Seed DB
+Bootstrap DB with some dummy data.
+```
+rake db:seed
+```
+Admin User: vamshins/vamshins
+Normal User: aseciwa/aseciwa
+
+Check db/seeds for more information.
+
 ## Get status of migration
 ```
 rake db:migrate:status
