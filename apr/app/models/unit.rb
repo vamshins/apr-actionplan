@@ -1,3 +1,3 @@
 class Unit < ActiveRecord::Base
-	belongs_to :action_plan
+	has_many :action_plans
 end

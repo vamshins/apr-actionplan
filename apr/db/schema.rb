@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111053757) do
+ActiveRecord::Schema.define(version: 20151111081720) do
 
   create_table "action_plans", force: :cascade do |t|
     t.date     "date_of_site_visit"
@@ -26,6 +26,45 @@ ActiveRecord::Schema.define(version: 20151111053757) do
   end
 
   add_index "action_plans", ["unit_id"], name: "index_action_plans_on_unit_id"
+
+  create_table "criterion_details", force: :cascade do |t|
+    t.integer  "action_plan_id"
+    t.integer  "criterion_id"
+    t.date     "cd_date1"
+    t.date     "cd_date2"
+    t.string   "cd_field1"
+    t.string   "cd_field2"
+    t.string   "comments"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "criterion_details", ["action_plan_id"], name: "index_criterion_details_on_action_plan_id"
+  add_index "criterion_details", ["criterion_id"], name: "index_criterion_details_on_criterion_id"
+
+  create_table "criterion_sub_details", force: :cascade do |t|
+    t.integer  "criterion_detail_id"
+    t.string   "action_item"
+    t.string   "associated_tasks"
+    t.string   "individuals_resp"
+    t.string   "other_res_items"
+    t.decimal  "cost_amt"
+    t.string   "source_of_funding"
+    t.date     "proj_start_date"
+    t.date     "target_comp_date"
+    t.string   "current_status"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "criterion_sub_details", ["criterion_detail_id"], name: "index_criterion_sub_details_on_criterion_detail_id"
+
+  create_table "criterions", force: :cascade do |t|
+    t.integer  "criterion_number"
+    t.string   "description"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "units", force: :cascade do |t|
     t.string   "unit"

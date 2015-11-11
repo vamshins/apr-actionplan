@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p class="link-position-right"><%= link_to 'New Criterion', new_criterion_path %></p>
+
+<br>
+<br>
+
+<h1>Listing Criterions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Criterion number</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @criterions.each do |criterion| %>
+      <tr>
+        <td><%= criterion.criterion_number %></td>
+        <td><%= criterion.description %></td>
+        <td><%= link_to 'Show', criterion %></td>
+        <td><%= link_to 'Edit', edit_criterion_path(criterion) %></td>
+        <td><%= link_to 'Destroy', criterion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

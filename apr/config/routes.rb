@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :criterion_sub_details
+  resources :criterion_details
+  resources :criterions
   resources :units
   resources :users
   resources :action_plans
