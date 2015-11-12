@@ -10,7 +10,7 @@
 <body>
 <div id="logged-in">
   Signed in as <SPAN id="top-username"> <%= session[:cas_user] %></SPAN>. Not you?
-  <a href="/logout">Sign out</a>
+  <%= link_to("Sign Out", logout_path) %>
 </div>
 <div id="wrapper">
   <div id="head">
