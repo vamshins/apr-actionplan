@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151118041834) do
+ActiveRecord::Schema.define(version: 20151123062007) do
 
   create_table "action_plans", force: :cascade do |t|
     t.date     "date_of_site_visit"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 20151118041834) do
     t.string   "description",      limit: 255
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.string   "field1",           limit: 500
+    t.string   "field2",           limit: 500
   end
 
   create_table "units", force: :cascade do |t|
