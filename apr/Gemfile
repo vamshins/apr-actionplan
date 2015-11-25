@@ -12,6 +12,9 @@ gem 'mysql2', '~> 0.3.17'
 # CAS Authentication
 gem "rubycas-client-rails", git: "git://github.com/rubycas/rubycas-client-rails.git"
 
+# Upload functionality
+gem 'carrierwave', '~> 0.10.0'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Bootstrap

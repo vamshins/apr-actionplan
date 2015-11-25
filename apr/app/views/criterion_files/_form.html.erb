@@ -12,8 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :criterion_detail_id %><br>
-    <%= f.text_field :criterion_detail_id %>
+    <%= f.hidden_field :criterion_detail_id, :value => @criterion_detail.id %>
   </div>
   <div class="field">
     <%= f.label :name %><br>
@@ -21,9 +20,9 @@
   </div>
   <div class="field">
     <%= f.label :attachment %><br>
-    <%= f.text_field :attachment %>
+    <%= f.file_field :attachment %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :value => "Upload" %>
   </div>
 <% end %>

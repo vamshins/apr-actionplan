@@ -71,6 +71,7 @@ class ActionPlansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def action_plan_params
-      params.require(:action_plan).permit(:unit_id, :user_id, :date_of_site_visit, :submission_or_update, :submission_or_update_date, :submitter_first_name, :submitter_last_name, :submitter_title)
+      # params.require(:action_plan).permit(:unit_id, :user_id, :date_of_site_visit, :submission_or_update, :submission_or_update_date, :submitter_first_name, :submitter_last_name, :submitter_title)
+      params.require(:action_plan).permit(:unit_id, :user_id, :date_of_site_visit, :submitter_first_name, :submitter_last_name, :submitter_title)
     end
 end

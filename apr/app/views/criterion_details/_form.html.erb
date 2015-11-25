@@ -44,13 +44,6 @@
         </div>
     <% end %>
 
-    <%# ------------------- Criterion Sub Details -------------------- %>
-    <% if !CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(@criterion.criterion_number).id).blank? %>
-        <% @criterion_sub_detail = CriterionSubDetail.new %>
-        <%= render template: 'criterion_sub_details/new' %>
-        <%# render :partial => @criterion_detail.criterion_sub_details.reverse %>
-    <% end %>
-
     <div class="field">
       <%= f.label :comments %><br>
       <%= f.text_field :comments %>
@@ -58,4 +51,18 @@
     <div class="actions">
       <%= f.submit %>
     </div>
+
+    <%# ------------------- Criterion Sub Details -------------------- %>
+    <% if !CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(@criterion.criterion_number).id).blank? %>
+        <% @criterion_sub_detail = CriterionSubDetail.new %>
+        <%= render template: 'criterion_sub_details/new' %>
+        <%# render :partial => @criterion_detail.criterion_sub_details.reverse %>
+
+        <% @criterion_files = CriterionFile.all %>
+        <%# @criterion_detail = CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(@criterion.criterion_number)) %>
+        <%= render template: 'criterion_files/index', :criterion_detail => @criterion_detail %>
+        <% @criterion_file = CriterionFile.new %>
+        <%= render template: 'criterion_files/new' %>
+    <% end %>
+
 <% end %>

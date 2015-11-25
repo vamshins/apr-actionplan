@@ -12,8 +12,8 @@
     <tr>
       <th>Unit</th>
       <th>Date of site visit</th>
-      <th>Submission or update</th>
-      <th>Submission or update date</th>
+      <!--<th>Submission or update</th>-->
+      <!--<th>Submission or update date</th>-->
       <th>Submitter name</th>
       <th>Submitter title</th>
       <th colspan="3"></th>
@@ -27,8 +27,8 @@
         <% if action_plan.unit_id != nil %>
           <td><%= Unit.find(action_plan.unit_id).unit %></td>
           <td><%= action_plan.date_of_site_visit %></td>
-          <td><%= action_plan.submission_or_update %></td>
-          <td><%= action_plan.submission_or_update_date %></td>
+          <!--<td><%# action_plan.submission_or_update %></td>-->
+          <!--<td><%# action_plan.submission_or_update_date %></td>-->
           <td><%= action_plan.submitter_first_name %>, <%= action_plan.submitter_last_name %></td>
           <td><%= action_plan.submitter_title %></td>
           <td><%= link_to 'Show', action_plan %></td>

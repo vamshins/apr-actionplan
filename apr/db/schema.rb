@@ -11,19 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125034826) do
+ActiveRecord::Schema.define(version: 20151125071407) do
 
   create_table "action_plans", force: :cascade do |t|
     t.date     "date_of_site_visit"
-    t.string   "submission_or_update",      limit: 255
-    t.date     "submission_or_update_date"
-    t.string   "submitter_first_name",      limit: 255
-    t.string   "submitter_title",           limit: 255
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-    t.string   "submitter_last_name",       limit: 255
-    t.integer  "unit_id",                   limit: 4
-    t.integer  "user_id",                   limit: 4
+    t.string   "submitter_first_name", limit: 255
+    t.string   "submitter_title",      limit: 255
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "submitter_last_name",  limit: 255
+    t.integer  "unit_id",              limit: 4
+    t.integer  "user_id",              limit: 4
   end
 
   add_index "action_plans", ["unit_id"], name: "index_action_plans_on_unit_id", using: :btree
