@@ -4,7 +4,7 @@ class CriterionSubDetailsController < ApplicationController
   # GET /criterion_sub_details
   # GET /criterion_sub_details.json
   def index
-    @criterion_sub_details = CriterionSubDetail.all
+    @criterion_sub_details = CriterionSubDetail.find_by_criterion_detail_id(@criterion_detail.id)
   end
 
   # GET /criterion_sub_details/1
@@ -24,11 +24,15 @@ class CriterionSubDetailsController < ApplicationController
   # POST /criterion_sub_details
   # POST /criterion_sub_details.json
   def create
+    puts "SUBDETAILS CREATE CALLED"
     @criterion_sub_detail = CriterionSubDetail.new(criterion_sub_detail_params)
 
     respond_to do |format|
       if @criterion_sub_detail.save
-        format.html { redirect_to @criterion_sub_detail, notice: 'Criterion sub detail was successfully created.' }
+        # format.html { redirect_to @criterion_sub_detail, notice: 'Criterion sub detail was successfully created.' }
+        criterion_detail_id = @criterion_sub_detail.criterion_detail_id
+        criterion_id = CriterionDetail.find(criterion_detail_id).criterion_id
+        format.html { redirect_to edit_criterion_detail_path(:id => @criterion_sub_detail.criterion_detail_id, :cr => Criterion.find(criterion_id).criterion_number), notice: 'Criterion sub detail was successfully created.' }
         format.json { render :show, status: :created, location: @criterion_sub_detail }
       else
         format.html { render :new }
@@ -42,7 +46,10 @@ class CriterionSubDetailsController < ApplicationController
   def update
     respond_to do |format|
       if @criterion_sub_detail.update(criterion_sub_detail_params)
-        format.html { redirect_to @criterion_sub_detail, notice: 'Criterion sub detail was successfully updated.' }
+        # format.html { redirect_to @criterion_sub_detail, notice: 'Criterion sub detail was successfully updated.' }
+        criterion_detail_id = @criterion_sub_detail.criterion_detail_id
+        criterion_id = CriterionDetail.find_by_criterion_id(criterion_detail_id).criterion_id
+        format.html { redirect_to edit_criterion_detail_path(:id => @criterion_sub_detail.criterion_detail_id, :cr => Criterion.find(criterion_id).criterion_number), notice: 'Criterion sub detail was successfully updated.' }
         format.json { render :show, status: :ok, location: @criterion_sub_detail }
       else
         format.html { render :edit }
@@ -54,9 +61,12 @@ class CriterionSubDetailsController < ApplicationController
   # DELETE /criterion_sub_details/1
   # DELETE /criterion_sub_details/1.json
   def destroy
+    criterion_detail_id = @criterion_sub_detail.criterion_detail_id
+    criterion_id = CriterionDetail.find_by_criterion_id(criterion_detail_id).criterion_id
     @criterion_sub_detail.destroy
     respond_to do |format|
-      format.html { redirect_to criterion_sub_details_url, notice: 'Criterion sub detail was successfully destroyed.' }
+      # format.html { redirect_to criterion_sub_details_url, notice: 'Criterion sub detail was successfully destroyed.' }
+      format.html { redirect_to edit_criterion_detail_path(:id => @criterion_sub_detail.criterion_detail_id, :cr => Criterion.find(criterion_id).criterion_number), notice: 'Criterion sub detail was successfully deleted.' }
       format.json { head :no_content }
     end
   end

@@ -46,6 +46,7 @@ class CriterionDetailsController < ApplicationController
   # PATCH/PUT /criterion_details/1
   # PATCH/PUT /criterion_details/1.json
   def update
+    puts "DETAILS UPDATE CALLED"
     respond_to do |format|
       if @criterion_detail.update(criterion_detail_params)
         # format.html { redirect_to @criterion_detail, notice: 'Criterion detail was successfully updated.' }
