@@ -14,17 +14,13 @@
 
       <div class="navbar-collapse collapse slidebar-nav">
         <% if !User.find_by_username(session[:cas_user].to_s).blank? %>
-            <% if session[:cas_user].to_s == User.find_by_username(session[:cas_user].to_s) && User.find_by_username(session[:cas_user].to_s).role.to_s == "Admin" then %>
+            <% if session[:cas_user].to_s.eql?(User.find_by_username(session[:cas_user].to_s).username) && User.find_by_username(session[:cas_user].to_s).role.to_s.eql?("Admin") then %>
                 <ul>
                   <li><%= link_to("Home", home_instructions_path) %></li>
-                  <li><%= link_to("APR Reports", action_plan_path) %></li>
+                  <li><%= link_to("APR Reports", action_plans_path) %></li>
                   <li><%= link_to("Criteria", criterions_path) %></li>
-                  <li><a href="/criterions/">Criteria</a></li>
-                  <li><a href="/admin/users/">Users</a></li>
-                  <li><a href="/user_roles/">Roles</a></li>
-                  <li><a href="/units/">Units</a></li>
-                  <li><a href="/colleges/">Colleges</a></li>
-                  <li><a href="/milestones/">Milestones</a></li>
+                  <li><%= link_to("Users", users_path) %></li>
+                  <li><%= link_to("Units", units_path) %></li>
                 </ul>
             <% else %>
                 <ul>
