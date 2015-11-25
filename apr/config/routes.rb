@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   resources :units
   resources :users
   resources :action_plans
-  root 'home#index'
+  # root 'home#index'
+  root 'home#instructions'
 
-  get 'home/index'
+  # get 'home/index'
+  get 'home/instructions'
 
   get 'logout' => 'application#logout'
 
