@@ -4,7 +4,7 @@ class CriterionSubDetailsController < ApplicationController
   # GET /criterion_sub_details
   # GET /criterion_sub_details.json
   def index
-    @criterion_sub_details = CriterionSubDetail.find_by_criterion_detail_id(@criterion_detail.id)
+    @criterion_sub_details = CriterionSubDetail.all
   end
 
   # GET /criterion_sub_details/1
@@ -24,7 +24,6 @@ class CriterionSubDetailsController < ApplicationController
   # POST /criterion_sub_details
   # POST /criterion_sub_details.json
   def create
-    puts "SUBDETAILS CREATE CALLED"
     @criterion_sub_detail = CriterionSubDetail.new(criterion_sub_detail_params)
 
     respond_to do |format|

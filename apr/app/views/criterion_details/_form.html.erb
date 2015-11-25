@@ -59,14 +59,14 @@
 <%# ------------------- Criterion Sub Details and Files-------------------- %>
 <% if !crit_detail.blank? %>
 
-    <% @criterion_sub_details = CriterionSubDetail.all %>
-    <%= render template: 'criterion_sub_details/index', :criterion_detail => @criterion_detail %>
+    <%# @criterion_sub_details = CriterionSubDetail.all %>
+    <% @criterion_sub_details = CriterionSubDetail.where(["criterion_detail_id = ?", @criterion_detail.id]) %>
+    <%= render template: 'criterion_sub_details/index' %>
     <% @criterion_sub_detail = CriterionSubDetail.new %>
     <%= render template: 'criterion_sub_details/new' %>
     <%# render :partial => @criterion_detail.criterion_sub_details.reverse %>
-<% end %>
-<% if !crit_detail.blank? %>
-    <% @criterion_files = CriterionFile.all %>
+
+    <% @criterion_files = CriterionFile.where(["criterion_detail_id = ?", @criterion_detail.id]) %>
     <%= render template: 'criterion_files/index', :criterion_detail => @criterion_detail %>
     <% @criterion_file = CriterionFile.new %>
     <%= render template: 'criterion_files/new' %>
