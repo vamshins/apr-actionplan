@@ -8,6 +8,7 @@
 
 User.create(first_name: 'Vamshi', last_name: 'NS', username: 'vamshins', email: 'vamshins@unm.edu', role: 'Admin')
 User.create(first_name: 'Alan', last_name: 'Seciwa', username: 'aseciwa', email: 'aseciwa@unm.edu', role: 'User')
+User.create(first_name: 'Magesh', last_name: 'Rajasekaran', username: 'mrajasekaran', email: 'mrajasekaran@unm.edu', role: 'User')
 
 Unit.create(unit:'Africana Studies', college:'College of Arts and Sciences')
 Unit.create(unit:'American Studies', college:'College of Arts and Sciences')
