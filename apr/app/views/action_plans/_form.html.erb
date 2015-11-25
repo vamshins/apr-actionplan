@@ -28,7 +28,7 @@
     <%= f.radio_button :submission_or_update, "Update" %>
   </div>
   <div class="field">
-    <%= f.label :submission_or_update_date %><br>
+    <%= f.label :Date %><br>
     <%= f.date_select :submission_or_update_date %>
   </div>
   <div class="field">
@@ -43,6 +43,7 @@
     <%= f.label :submitter_title %><br>
     <%= f.text_field :submitter_title %>
   </div>
+  <%= f.hidden_field :user_id, :value => User.find_by_username(session[:cas_user].to_s).id %>
   <div class="actions">
     <%= f.submit %>
   </div>

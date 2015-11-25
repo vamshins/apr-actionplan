@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
+  resources :criterion_files
+  resources :criterion_sub_details
+  resources :criterion_details
+  resources :criterions
   resources :units
   resources :users
   resources :action_plans
-  root 'home#index'
+  # root 'home#index'
+  root 'home#instructions'
 
-  get 'home/index'
+  # get 'home/index'
+  get 'home/instructions'
+
+  get 'logout' => 'application#logout'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
