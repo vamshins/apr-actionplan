@@ -19,6 +19,7 @@ class CriterionSubDetailsController < ApplicationController
 
   # GET /criterion_sub_details/1/edit
   def edit
+    @criterion_detail_id = @criterion_sub_detail.criterion_detail_id
   end
 
   # POST /criterion_sub_details
