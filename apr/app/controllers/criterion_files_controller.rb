@@ -75,6 +75,6 @@ class CriterionFilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def criterion_file_params
-      params.require(:criterion_file).permit(:criterion_detail_id, :name, :attachment)
+      params.require(:criterion_file).permit(:user_id, :unit_id, :criterion_detail_id, :name, :attachment)
     end
 end

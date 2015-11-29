@@ -22,6 +22,7 @@
     <%= f.label :attachment %><br>
     <%= f.file_field :attachment %>
   </div>
+    <%= f.hidden_field :user_id, :value => User.find_by_username(session[:cas_user].to_s).id %>
   <div class="actions">
     <%= f.submit :value => "Upload" %>
   </div>

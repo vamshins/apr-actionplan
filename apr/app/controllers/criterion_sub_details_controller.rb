@@ -78,6 +78,6 @@ class CriterionSubDetailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def criterion_sub_detail_params
-      params.require(:criterion_sub_detail).permit(:criterion_detail_id, :action_item, :associated_tasks, :individuals_resp, :other_res_items, :cost_amt, :source_of_funding, :proj_start_date, :target_comp_date, :current_status)
+      params.require(:criterion_sub_detail).permit(:user_id, :unit_id, :criterion_detail_id, :action_item, :associated_tasks, :individuals_resp, :other_res_items, :cost_amt, :source_of_funding, :proj_start_date, :target_comp_date, :current_status)
     end
 end

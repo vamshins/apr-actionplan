@@ -54,6 +54,7 @@
     <%= f.label :current_status %><br>
     <%= f.text_field :current_status %>
   </div>
+    <%= f.hidden_field :user_id, :value => User.find_by_username(session[:cas_user].to_s).id %>
   <div class="actions">
     <%= f.submit %>
   </div>
