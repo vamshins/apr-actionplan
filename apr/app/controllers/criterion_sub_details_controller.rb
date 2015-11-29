@@ -19,6 +19,9 @@ class CriterionSubDetailsController < ApplicationController
 
   # GET /criterion_sub_details/1/edit
   def edit
+    if !User.find_by_username(session[:cas_user].to_s).eql?(User.find(@criterion_sub_detail.user_id)) then
+      raise ActionController::RoutingError.new('Criterion sub details not found.')
+    end
     @criterion_detail_id = @criterion_sub_detail.criterion_detail_id
   end
 
@@ -79,6 +82,6 @@ class CriterionSubDetailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def criterion_sub_detail_params
-      params.require(:criterion_sub_detail).permit(:user_id, :unit_id, :criterion_detail_id, :action_item, :associated_tasks, :individuals_resp, :other_res_items, :cost_amt, :source_of_funding, :proj_start_date, :target_comp_date, :current_status)
+      params.require(:criterion_sub_detail).permit(:user_id, :criterion_detail_id, :action_item, :associated_tasks, :individuals_resp, :other_res_items, :cost_amt, :source_of_funding, :proj_start_date, :target_comp_date, :current_status)
     end
 end

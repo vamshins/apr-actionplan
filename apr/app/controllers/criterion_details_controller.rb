@@ -22,6 +22,9 @@ class CriterionDetailsController < ApplicationController
 
   # GET /criterion_details/1/edit
   def edit
+    if !User.find_by_username(session[:cas_user].to_s).eql?(User.find(@criterion_detail.user_id)) then
+      raise ActionController::RoutingError.new('Criterion detail not found.')
+    end
     criterion_number = params[:cr]
     @criterion = Criterion.find_by_criterion_number(criterion_number)
   end

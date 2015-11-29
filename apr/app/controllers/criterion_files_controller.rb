@@ -19,6 +19,9 @@ class CriterionFilesController < ApplicationController
 
   # GET /criterion_files/1/edit
   def edit
+    if !User.find_by_username(session[:cas_user].to_s).eql?(User.find(@criterion_file.user_id)) then
+      raise ActionController::RoutingError.new('Criterion file not found.')
+    end
   end
 
   # POST /criterion_files

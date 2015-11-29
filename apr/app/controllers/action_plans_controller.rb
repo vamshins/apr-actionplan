@@ -19,6 +19,9 @@ class ActionPlansController < ApplicationController
 
   # GET /action_plans/1/edit
   def edit
+    if !User.find_by_username(session[:cas_user].to_s).eql?(User.find(@action_plan.user_id)) then
+      raise ActionController::RoutingError.new('Action Plan not found.')
+    end
   end
 
   # POST /action_plans
