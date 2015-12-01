@@ -5,9 +5,20 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'home', media: 'all' %> <!-- home.scss -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<!--<div id="logged-in">-->
+<!--Signed in as <SPAN id="top-username"> <%= session[:cas_user] %></SPAN>. Not you?-->
+<!--<%= link_to("Sign Out", logout_path) %>-->
+<!--</div>-->
+<!--<div id="wrapper">-->
+<!--<div id="head">-->
+<!--<div id="banner">-->
+<!--<img src="/assets/banner.jpg"/>-->
 
 <!-- Navigation Bar -->
 <div class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin: 0px;">
@@ -26,19 +37,10 @@
 
     <!--<div class="navbar-header navbar-right">-->
     <div class="collapse navbar-collapse navbar-right" id="nav-bar-apr-collapse">
-      <% if session[:cas_user].to_s == User.find_by_username(session[:cas_user].to_s) && User.find_by_username(session[:cas_user].to_s).role.to_s == "Admin" then %>
-          <ul class="nav navbar-nav">
-            <li><a href="#">Home</a></li>
-          </ul>
-      <% else %>
-          <ul class="nav navbar-nav">
-            <li><%= link_to("Home", home_index_path) %></li>
-            <li><%= link_to("APR Reports", action_plans_path) %></li>
-            <li><a href="/criterions/">Criteria</a></li>
-            <li><a href="#">Signed in as<%= session[:cas_user] %>. Not you?</a></li>
-            <li><a href="#">Sign Out</a></li>
-          </ul>
-      <% end %>
+            <ul class="nav navbar-nav">
+              <li><a href="#">Signed in as <%= session[:cas_user] %>. Not you?</a></li>
+              <li><%= link_to("Sign Out", logout_path) %></li>
+            </ul>
     </div>
   </div>
 
@@ -53,7 +55,7 @@
 
 <!-- Main Content -->
 <div id="content">
-  <%= yield %>
+  <%= render template:'home/index' %>
 </div>
 <br><br>
 
@@ -87,7 +89,7 @@
       <div class="col-sm-4">
         <p>
           <a href="http://unm.edu"></a>
-          <img src="https://webcore.unm.edu/v2/images/unm-transparent-white.png" alt="The University of New Mexico" >
+          <img src="https://webcore.unm.edu/v2/images/unm-transparent-white.png" alt="The University of New Mexico">
         </p>
         <small>
           The University of New Mexico

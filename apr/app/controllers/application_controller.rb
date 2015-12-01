@@ -8,4 +8,9 @@ class ApplicationController < ActionController::Base
   def cas_filter
     RubyCAS::Filter.filter(self)
   end
+
+  def logout
+  	reset_session
+  	RubyCAS::Filter.logout(self)
+  end
 end
