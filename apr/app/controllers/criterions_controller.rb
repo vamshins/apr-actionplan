@@ -19,6 +19,9 @@ class CriterionsController < ApplicationController
 
   # GET /criterions/1/edit
   def edit
+    if !User.find_by_username(session[:cas_user].to_s).role.eql?("Admin") then
+      raise ActionController::RoutingError.new('Action not permitted.')
+    end
   end
 
   # POST /criterions

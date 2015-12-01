@@ -19,8 +19,10 @@ class CriterionFilesController < ApplicationController
 
   # GET /criterion_files/1/edit
   def edit
-    if !User.find_by_username(session[:cas_user].to_s).eql?(User.find(@criterion_file.user_id)) then
-      raise ActionController::RoutingError.new('Criterion file not found.')
+    if !User.find_by_username(session[:cas_user].to_s).role.eql?("Admin") then
+      if !User.find_by_username(session[:cas_user].to_s).eql?(User.find(@criterion_file.user_id)) then
+        raise ActionController::RoutingError.new('Criterion file not found.')
+      end
     end
   end
 
@@ -71,13 +73,13 @@ class CriterionFilesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_criterion_file
-      @criterion_file = CriterionFile.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_criterion_file
+    @criterion_file = CriterionFile.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def criterion_file_params
-      params.require(:criterion_file).permit(:user_id, :unit_id, :criterion_detail_id, :name, :attachment)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def criterion_file_params
+    params.require(:criterion_file).permit(:user_id, :unit_id, :criterion_detail_id, :name, :attachment)
+  end
 end

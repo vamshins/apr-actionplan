@@ -1,13 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p class="link-position-right"><%= link_to("Create New APR Report", new_action_plan_path) %></p>
-
-<br>
-<br>
+<!--<p class="link-position-right"><%= link_to("Create New APR Report", new_action_plan_path) %></p>-->
 
 <h1>Listing Action Plans</h1>
 
-<table>
+<table class= "table table-striped">
   <thead>
     <tr>
       <th>Unit</th>
@@ -31,9 +28,9 @@
           <!--<td><%# action_plan.submission_or_update_date %></td>-->
           <td><%= action_plan.submitter_first_name %>, <%= action_plan.submitter_last_name %></td>
           <td><%= action_plan.submitter_title %></td>
-          <td><%= link_to 'Show', action_plan %></td>
-          <td><%= link_to 'Edit', edit_action_plan_path(action_plan) %></td>
-          <td><%= link_to 'Destroy', action_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', action_plan, class: "btn" %></td>
+          <td><%= link_to 'Edit', edit_action_plan_path(action_plan), class: "btn", style: 'color: purple;' %></td>
+          <td><%= link_to 'Delete', action_plan, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn", style: 'color: red;' %></td>
         <% end %>
       </tr>
     <% end %>

@@ -1,7 +1,7 @@
 
 <h1>Listing Criterion Sub Details</h1>
 
-<table>
+<table class= "table table-striped">
   <thead>
     <tr>
       <!--<th>Criterion detail</th>-->
@@ -14,6 +14,7 @@
       <th>Proj start date</th>
       <th>Target comp date</th>
       <th>Current status</th>
+      <th>Action</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -32,8 +33,8 @@
         <td><%= criterion_sub_detail.target_comp_date %></td>
         <td><%= criterion_sub_detail.current_status %></td>
         <!--<td><%# link_to 'Show', criterion_sub_detail %></td>-->
-        <td><%= link_to 'Edit', edit_criterion_sub_detail_path(criterion_sub_detail) %></td>
-        <td><%= link_to 'Delete', criterion_sub_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_criterion_sub_detail_path(criterion_sub_detail), class: "btn", style: 'color: purple;' %></td>
+        <td><%= link_to 'Delete', criterion_sub_detail, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn", style: 'color: red;' %></td>
       </tr>
     <% end %>
   </tbody>
