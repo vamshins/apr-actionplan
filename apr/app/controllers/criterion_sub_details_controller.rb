@@ -39,6 +39,7 @@ class CriterionSubDetailsController < ApplicationController
         criterion_id = CriterionDetail.find(criterion_detail_id).criterion_id
         format.html { redirect_to edit_criterion_detail_path(:id => @criterion_sub_detail.criterion_detail_id, :cr => Criterion.find(criterion_id).criterion_number), notice: 'Criterion sub detail was successfully created.' }
         format.json { render :show, status: :created, location: @criterion_sub_detail }
+        format.js { }
       else
         format.html { render :new }
         format.json { render json: @criterion_sub_detail.errors, status: :unprocessable_entity }
@@ -67,7 +68,7 @@ class CriterionSubDetailsController < ApplicationController
   # DELETE /criterion_sub_details/1.json
   def destroy
     criterion_detail_id = @criterion_sub_detail.criterion_detail_id
-    criterion_id = CriterionDetail.find_by_criterion_id(criterion_detail_id).criterion_id
+    criterion_id = CriterionDetail.find(criterion_detail_id).criterion_id
     @criterion_sub_detail.destroy
     respond_to do |format|
       # format.html { redirect_to criterion_sub_details_url, notice: 'Criterion sub detail was successfully destroyed.' }

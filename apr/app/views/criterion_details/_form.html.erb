@@ -62,9 +62,13 @@
 
     <%# @criterion_sub_details = CriterionSubDetail.all %>
     <% @criterion_sub_details = CriterionSubDetail.where(["criterion_detail_id = ?", @criterion_detail.id]) %>
+
     <%= render template: 'criterion_sub_details/index' %>
+    <div id="csdsection">
+    </div>
     <% @criterion_sub_detail = CriterionSubDetail.new %>
-    <%= render template: 'criterion_sub_details/new' %>
+    <%# render template: 'criterion_sub_details/new' %>
+    <%= render 'criterion_sub_details/criterion_sd_under_cd', review: @criterion_detail %>
     <%# render :partial => @criterion_detail.criterion_sub_details.reverse %>
 
     <% @criterion_files = CriterionFile.where(["criterion_detail_id = ?", @criterion_detail.id]) %>
