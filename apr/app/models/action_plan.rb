@@ -8,6 +8,13 @@ class ActionPlan < ActiveRecord::Base
   validates :submitter_title, presence: {message: "cannot be blank!"}
   validates :user_id, presence: {message: "cannot be blank!"}
 
+  validate :date_of_sv_cannot_be_in_the_past
+
+  def date_of_sv_cannot_be_in_the_past
+    errors.add(:date_of_site_visit, "can't be in the past") if
+        !date_of_site_visit.blank? and date_of_site_visit < Date.today
+  end
+
 
   # def del_referenced_data
   #   criterion_detail = CriterionDetail.find_by_action_plan_id(id)

@@ -1,17 +1,15 @@
 <br>
-<br>
 <div class="container">
   <%= form_for(@action_plan, :html => {:class => 'form-horizontal'}) do |f| %>
       <% if @action_plan.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(@action_plan.errors.count, "error") %> prohibited this action_plan from being
-              saved:</h2>
-
-            <ul>
+            <!--<h2><%= pluralize(@action_plan.errors.count, "error") %> prohibited this action_plan from being-->
+              <!--saved:</h2>-->
+            <div class="alert alert-danger">
               <% @action_plan.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
+                  <%= message %><br>
               <% end %>
-            </ul>
+            </div>
           </div>
       <% end %>
 
@@ -31,13 +29,13 @@
       <div class="form-group">
         <label class="col-xs-2"><%= f.label :submitter_first_name %></label>
 
-        <div class="col-xs-10"><%= f.text_field :submitter_first_name %></div>
+        <div class="col-xs-10"><%= f.text_field :submitter_first_name, :value => User.find_by_username(session[:cas_user].to_s).first_name, disabled: true %></div>
       </div>
 
       <div class="form-group">
         <label class="col-xs-2"><%= f.label :submitter_last_name %></label>
 
-        <div class="col-xs-10"><%= f.text_field :submitter_last_name %></div>
+        <div class="col-xs-10"><%= f.text_field :submitter_last_name, :value => User.find_by_username(session[:cas_user].to_s).last_name, disabled: true %></div>
       </div>
 
       <div class="form-group">

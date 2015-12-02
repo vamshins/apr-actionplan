@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if User.find_by_username(session[:cas_user].to_s).role.eql?("Admin") then %>
+
+    <p id="notice"><%= notice %></p>
 
 <!--<p class="link-position-right"><%= link_to("Create New APR Report", new_action_plan_path) %></p>-->
 
@@ -19,7 +21,7 @@
   </thead>
 
   <tbody>
-  <% if session[:cas_user].to_s != "" %>
+  <% if session[:cas_user].to_s.eql?("") %>
       <% @action_plans.each do |action_plan| %>
           <tr>
             <% if action_plan.unit_id != nil %>
@@ -39,3 +41,7 @@
   <% end %>
   </tbody>
 </table>
+<% else %>
+    <br>
+    <p>You do not have permissions to view this page.<p>
+<% end %>
