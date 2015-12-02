@@ -1,6 +1,7 @@
 
 <h1>Listing Criterion Sub Details</h1>
 
+<% if !@criterion_sub_details.blank? then %>
 <table class= "table table-striped">
   <thead>
     <tr>
@@ -14,7 +15,9 @@
       <th>Proj start date</th>
       <th>Target comp date</th>
       <th>Current status</th>
-      <th>Action</th>
+      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("complete") then %>
+        <th>Action</th>
+      <% end %>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -33,12 +36,18 @@
         <td><%= criterion_sub_detail.target_comp_date %></td>
         <td><%= criterion_sub_detail.current_status %></td>
         <!--<td><%# link_to 'Show', criterion_sub_detail %></td>-->
-        <td><%= link_to 'Edit', edit_criterion_sub_detail_path(criterion_sub_detail), class: "btn", style: 'color: purple;' %></td>
-        <td><%= link_to 'Delete', criterion_sub_detail, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn", style: 'color: red;' %></td>
+        <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("complete") then %>
+            <td><%= link_to 'Edit', edit_criterion_sub_detail_path(criterion_sub_detail), class: "btn", style: 'color: purple;' %></td>
+            <td><%= link_to 'Delete', criterion_sub_detail, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn", style: 'color: red;' %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<% else %>
+    No records.
+<% end %>
 
 <br>
 

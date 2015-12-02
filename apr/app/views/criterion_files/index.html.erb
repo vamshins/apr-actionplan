@@ -1,11 +1,15 @@
 <h1>Listing Criterion Files</h1>
 
+<% if !@criterion_files.blank? then %>
 <table>
   <thead>
     <tr>
       <!--<th>Criterion detail</th>-->
       <th>Name</th>
       <th>Download Link</th>
+      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("complete") then %>
+          <th>Action</th>
+      <% end %>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -18,10 +22,16 @@
         <!--<td><%# criterion_file.attachment %></td>-->
         <td><%= link_to 'Download', criterion_file.attachment_url, :target => "_blank" %></td>
         <!--<td><%# link_to 'Edit', edit_criterion_file_path(criterion_file) %></td>-->
-        <td><%= link_to 'Delete', criterion_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("complete") then %>
+            <td><%= link_to 'Delete', criterion_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<% else %>
+No files uploaded.
+<% end %>
 
 <br>
