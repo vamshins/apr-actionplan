@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201220750) do
+ActiveRecord::Schema.define(version: 20151202184859) do
 
   create_table "action_plans", force: :cascade do |t|
     t.date     "date_of_site_visit"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20151201220750) do
     t.string   "role",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "status",     limit: 255
   end
 
   add_foreign_key "action_plans", "units"

@@ -15,6 +15,10 @@ class ActionPlan < ActiveRecord::Base
         !date_of_site_visit.blank? and date_of_site_visit < Date.today
   end
 
+  STATUS_TYPES = ['Complete', 'Incomplete']
+  validates :status,
+            :inclusion  => { :in => ['Complete', 'Incomplete'],
+                             :message    => "%{value} is not a valid status" }
 
   # def del_referenced_data
   #   criterion_detail = CriterionDetail.find_by_action_plan_id(id)

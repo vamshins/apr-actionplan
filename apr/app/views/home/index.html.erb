@@ -30,7 +30,7 @@
                   <% if ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).blank? then %>
                       <li><%= link_to("Title page", new_action_plan_path) %></li>
                   <% else %>
-                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("complete") then %>
+                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("Complete") then %>
                           <li><%= link_to("Title page", edit_action_plan_path(:id => ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).id)) %></li>
                       <% else %>
                           <li><%= link_to("Title page", action_plan_path(:id => ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).id)) %></li>
@@ -40,7 +40,7 @@
                   <%# --------- Show Criterions only if Action Plan is created -------------------%>
                   <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).blank? %>
                       <%# --------- Criterion 1 -------------------%>
-                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("complete") then %>
+                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("Complete") then %>
                           <% if CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(1).id).blank? then %>
                               <li><%= link_to("Criterion 1", new_criterion_detail_path(:cr => 1)) %></li>
                           <% else %>
@@ -55,7 +55,7 @@
                       <% end %>
 
                       <%# --------- Criterion 2 -------------------%>
-                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("complete") then %>
+                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("Complete") then %>
                           <% if CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(2).id).blank? then %>
                               <li><%= link_to("Criterion 2", new_criterion_detail_path(:cr => 2)) %></li>
                           <% else %>
@@ -70,7 +70,7 @@
                       <% end %>
 
                       <%# --------- Criterion 3 -------------------%>
-                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("complete") then %>
+                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("Complete") then %>
                           <% if CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(3).id).blank? then %>
                               <li><%= link_to("Criterion 3", new_criterion_detail_path(:cr => 3)) %></li>
                           <% else %>
@@ -85,7 +85,7 @@
                       <% end %>
 
                       <%# --------- Criterion 4 -------------------%>
-                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("complete") then %>
+                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("Complete") then %>
                           <% if CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(4).id).blank? then %>
                               <li><%= link_to("Criterion 4", new_criterion_detail_path(:cr => 4)) %></li>
                           <% else %>
@@ -100,7 +100,7 @@
                       <% end %>
 
                       <%# --------- Criterion 5 -------------------%>
-                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("complete") then %>
+                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("Complete") then %>
                           <% if CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(5).id).blank? then %>
                               <li><%= link_to("Criterion 5", new_criterion_detail_path(:cr => 5)) %></li>
                           <% else %>
@@ -115,7 +115,7 @@
                       <% end %>
 
                       <%# --------- Criterion 6 -------------------%>
-                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("complete") then %>
+                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("Complete") then %>
                           <% if CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(6).id).blank? then %>
                               <li><%= link_to("Criterion 6", new_criterion_detail_path(:cr => 6)) %></li>
                           <% else %>
@@ -130,7 +130,7 @@
                       <% end %>
 
                       <%# --------- Criterion 7 -------------------%>
-                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("complete") then %>
+                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("Complete") then %>
                           <% if CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(7).id).blank? then %>
                               <li><%= link_to("Criterion 7", new_criterion_detail_path(:cr => 7)) %></li>
                           <% else %>
@@ -145,7 +145,7 @@
                       <% end %>
 
                       <%# --------- Criterion 8 -------------------%>
-                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("complete") then %>
+                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("Complete") then %>
                           <% if CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(8).id).blank? then %>
                               <li><%= link_to("Criterion 8", new_criterion_detail_path(:cr => 8)) %></li>
                           <% else %>
@@ -160,7 +160,7 @@
                       <% end %>
 
                       <%# --------- Criterion 9 -------------------%>
-                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("complete") then %>
+                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("Complete") then %>
                           <% if CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(9).id).blank? then %>
                               <li><%= link_to("Criterion 9", new_criterion_detail_path(:cr => 9)) %></li>
                           <% else %>
@@ -173,6 +173,7 @@
                                                                                    :cr => 9)) %></li>
                           <% end %>
                       <% end %>
+                      <li><%= link_to 'Summary', action_plan_path(:id => ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).id) %></li>
                       <li><%= link_to "Submit to APR", action_plans_s_submit_to_apr_path %></li>
                   <% end %>
                 </ul>

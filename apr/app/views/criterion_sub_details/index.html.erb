@@ -8,17 +8,17 @@
       <thead>
       <tr>
         <!--<th>Criterion detail</th>-->
-        <th>Action item</th>
-        <th>Associated tasks</th>
-        <th>Individuals resp</th>
-        <th>Other res items</th>
-        <th>Cost amt</th>
-        <th>Source of funding</th>
-        <th>Proj start date</th>
-        <th>Target comp date</th>
-        <th>Current status</th>
+        <th>Action Item</th>
+        <th>Associated Tasks</th>
+        <th>Individual(s) Responsible</th>
+        <th>Other Resources/Items</th>
+        <th>$ Cost Amount (if applicable)</th>
+        <th>Source of Funding</th>
+        <th>Projected Start Date</th>
+        <th>Target Date for Completion</th>
+        <th>Current status as of <%= Time.now.strftime("%m/%d/%Y") %></th>
         <% if !user.role.eql?("Admin") %>
-            <% if !ActionPlan.find_by_user_id(user.id).status.eql?("complete") then %>
+            <% if !ActionPlan.find_by_user_id(user.id).status.eql?("Complete") then %>
                 <th>Action</th>
             <% end %>
         <% end %>
@@ -41,7 +41,7 @@
             <td><%= criterion_sub_detail.current_status %></td>
             <!--<td><%# link_to 'Show', criterion_sub_detail %></td>-->
             <% if !user.role.eql?("Admin") %>
-                <% if !ActionPlan.find_by_user_id(user.id).status.eql?("complete") then %>
+                <% if !ActionPlan.find_by_user_id(user.id).status.eql?("Complete") then %>
                     <td><%= link_to 'Edit', edit_criterion_sub_detail_path(criterion_sub_detail), class: "btn", style: 'color: purple;' %></td>
                     <td><%= link_to 'Delete', criterion_sub_detail, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn", style: 'color: red;' %></td>
                 <% end %>

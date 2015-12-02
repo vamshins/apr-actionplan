@@ -1,6 +1,6 @@
 <h1>Submit Action Plan to APR</h1>
 
-<% if ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).status.eql?("incomplete") then %>
+<% if ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).status.eql?("Incomplete") then %>
 
 <p>This form submits your Action Plan to APR department.</p>
 

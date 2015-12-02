@@ -20,39 +20,39 @@
       <%= f.hidden_field :criterion_detail_id, :value => @criterion_detail.id %>
     </div>
     <div class="field">
-      <%= f.label :action_item %><br>
+      <%= f.label :action_item, "Action Item" %><br>
       <%= f.text_area :action_item, size: "50x5" %>
     </div>
     <div class="field">
-      <%= f.label :associated_tasks %><br>
+      <%= f.label :associated_tasks, "Associated Tasks" %><br>
       <%= f.text_area :associated_tasks, size: "50x5" %>
     </div>
     <div class="field">
-      <%= f.label :individuals_resp %><br>
+      <%= f.label :individuals_resp, "Individual(s) Responsible" %><br>
       <%= f.text_area :individuals_resp, size: "50x5" %>
     </div>
     <div class="field">
-      <%= f.label :other_res_items %><br>
+      <%= f.label :other_res_items, "Other Resources/Items" %><br>
       <%= f.text_area :other_res_items, size: "50x5" %>
     </div>
     <div class="field">
-      <%= f.label :cost_amt %><br>
+      <%= f.label :cost_amt, "$ Cost Amount (if applicable)" %><br>
       <%= f.text_field :cost_amt %>
     </div>
     <div class="field">
-      <%= f.label :source_of_funding %><br>
+      <%= f.label :source_of_funding, "Source of Funding" %><br>
       <%= f.text_area :source_of_funding, size: "50x5" %>
     </div>
     <div class="field">
-      <%= f.label :proj_start_date %><br>
+      <%= f.label :proj_start_date, "Projected Start Date" %><br>
       <%= f.date_select :proj_start_date %>
     </div>
     <div class="field">
-      <%= f.label :target_comp_date %><br>
+      <%= f.label :target_comp_date, "Target Date for Completion" %><br>
       <%= f.date_select :target_comp_date %>
     </div>
     <div class="field">
-      <%= f.label :current_status %><br>
+      <%= f.label :current_status, "Current Status as of #{Time.now.strftime("%m/%d/%Y")}" %><br>
       <%= f.text_area :current_status, size: "50x5" %>
     </div>
     <%= f.hidden_field :user_id, :value => User.find_by_username(session[:cas_user].to_s).id %>

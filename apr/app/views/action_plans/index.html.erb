@@ -21,7 +21,7 @@
   </thead>
 
   <tbody>
-  <% if session[:cas_user].to_s.eql?("") %>
+  <% if session[:cas_user].to_s.present? %>
       <% @action_plans.each do |action_plan| %>
           <tr>
             <% if action_plan.unit_id != nil %>
