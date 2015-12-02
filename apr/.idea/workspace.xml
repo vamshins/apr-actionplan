@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c015c0aa-42ee-40de-90ad-a550e06b2910" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/action_plans/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/action_plans/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/criterion_sub_details/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/criterion_sub_details/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/users/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/action_plan.rb" afterPath="$PROJECT_DIR$/app/models/action_plan.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/action_plans_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/action_plans_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/action_plans/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/action_plans/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/action_plans/index.html.erb" afterPath="$PROJECT_DIR$/app/views/action_plans/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/criterion_files/index.html.erb" afterPath="$PROJECT_DIR$/app/views/criterion_files/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/criterion_sub_details/index.html.erb" afterPath="$PROJECT_DIR$/app/views/criterion_sub_details/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/action_plans/show.html.erb" afterPath="$PROJECT_DIR$/app/views/action_plans/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/action_plans/submit_to_apr.erb" afterPath="$PROJECT_DIR$/app/views/action_plans/submit_to_apr.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/criterion_files/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/criterion_files/_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/uploaders/attachment_uploader.rb" afterPath="$PROJECT_DIR$/app/uploaders/attachment_uploader.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/criterion_files_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/criterion_files_controller.rb" />
     </list>
     <ignored path="apr.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -72,11 +59,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/criterion_sub_details/index.html.erb">
+      <file leaf-file-name="attachment_uploader.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/uploaders/attachment_uploader.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.29540482">
-              <caret line="18" column="69" selection-start-line="18" selection-start-column="69" selection-end-line="18" selection-end-column="69" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="criterion_files_controller.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/criterion_files_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.56133056">
+              <caret line="42" column="246" selection-start-line="42" selection-start-column="246" selection-end-line="42" selection-end-column="246" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_form.html.erb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/criterion_files/_form.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.291667">
+              <caret line="22" column="94" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="94" />
               <folding />
             </state>
           </provider>
@@ -107,13 +114,11 @@
         <option value="$PROJECT_DIR$/app/views/criterion_files/new.html.erb" />
         <option value="$PROJECT_DIR$/app/views/criterion_files/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/views/criterion_sub_details/new.html.erb" />
-        <option value="$PROJECT_DIR$/app/uploaders/attachment_uploader.rb" />
         <option value="$PROJECT_DIR$/app/views/criterion_files/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/home/instructions.erb" />
         <option value="$PROJECT_DIR$/app/views/criterions/show.html.erb" />
         <option value="$PROJECT_DIR$/db/seeds.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20151129021640_add_created_by.rb" />
-        <option value="$PROJECT_DIR$/app/views/criterion_files/_form.html.erb" />
         <option value="$PROJECT_DIR$/db/schema.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20151129022520_add_user_id_to_tables.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20151129024705_add_user_id_to_tables.rb" />
@@ -123,7 +128,6 @@
         <option value="$PROJECT_DIR$/app/views/criterion_details/_form.html.erb" />
         <option value="$PROJECT_DIR$/db/migrate/20151201220750_set_ap_status.rb" />
         <option value="$PROJECT_DIR$/app/controllers/criterion_details_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/criterion_files_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/home.scss" />
         <option value="$PROJECT_DIR$/app/views/users/index.html.erb" />
         <option value="$PROJECT_DIR$/db/migrate/20151111042614_create_action_plans.rb" />
@@ -148,6 +152,9 @@
         <option value="$PROJECT_DIR$/app/views/criterion_files/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/criterion_sub_details/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/criterion_sub_details/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/uploaders/attachment_uploader.rb" />
+        <option value="$PROJECT_DIR$/app/views/criterion_files/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/criterion_files_controller.rb" />
       </list>
     </option>
   </component>
@@ -330,6 +337,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="action_plans" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uploaders" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -650,22 +675,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/criterions_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42471042">
-          <caret line="22" column="68" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/units_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -742,14 +751,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/criterion_files_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5302445">
-          <caret line="65" column="39" selection-start-line="65" selection-start-column="39" selection-end-line="65" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -1018,14 +1019,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/action_plans/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14660831">
-          <caret line="49" column="91" selection-start-line="49" selection-start-column="91" selection-end-line="49" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/criterion_files/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.032822758">
@@ -1042,6 +1035,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/criterion_sub_details/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2800875">
+          <caret line="39" column="42" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/criterion_sub_details/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.291667">
@@ -1050,10 +1051,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/criterion_sub_details/index.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/action_plans/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29540482">
-          <caret line="18" column="69" selection-start-line="18" selection-start-column="69" selection-end-line="18" selection-end-column="69" />
+        <state vertical-scroll-proportion="0.7221007">
+          <caret line="31" column="154" selection-start-line="31" selection-start-column="138" selection-end-line="31" selection-end-column="154" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/uploaders/attachment_uploader.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/criterion_files/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.291667">
+          <caret line="22" column="94" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/criterion_files_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.56133056">
+          <caret line="42" column="246" selection-start-line="42" selection-start-column="246" selection-end-line="42" selection-end-column="246" />
           <folding />
         </state>
       </provider>

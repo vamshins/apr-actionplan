@@ -30,16 +30,17 @@ class CriterionFilesController < ApplicationController
   # POST /criterion_files.json
   def create
     @criterion_file = CriterionFile.new(criterion_file_params)
+    criterion_detail_id = @criterion_file.criterion_detail_id
+    criterion_id = CriterionDetail.find(criterion_detail_id).criterion_id
 
     respond_to do |format|
       if @criterion_file.save
         # format.html { redirect_to @criterion_file, notice: 'Criterion file was successfully created.' }
-        criterion_detail_id = @criterion_file.criterion_detail_id
-        criterion_id = CriterionDetail.find(criterion_detail_id).criterion_id
         format.html { redirect_to edit_criterion_detail_path(:id => @criterion_file.criterion_detail_id, :cr => Criterion.find(criterion_id).criterion_number), notice: 'File uploaded successfully.' }
         format.json { render :show, status: :created, location: @criterion_file }
       else
-        format.html { render :new }
+        # format.html { render :new }
+        format.html { redirect_to edit_criterion_detail_path(:id => @criterion_file.criterion_detail_id, :cr => Criterion.find(criterion_id).criterion_number), notice: 'File not uploaded. Only .pdf .doc .docx .xls .xlsx documents can be uploaded.' }
         format.json { render json: @criterion_file.errors, status: :unprocessable_entity }
       end
     end
