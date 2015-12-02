@@ -15,6 +15,11 @@ Rails.application.routes.draw do
 
   get 'logout' => 'application#logout'
 
+  get 'action_plans/s/submit_to_apr' => 'action_plans#submit_to_apr'
+
+  get 'action_plans/s/submit_confirmed' => 'action_plans#submit_confirmed'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -45,6 +45,14 @@
         <th><%= f.label :submitter_title %><br></th>
         <td><%= f.text_field :submitter_title %></td>
       </tr>
+      <% if User.find_by_username(session[:cas_user].to_s).role.eql?("Admin") then %>
+          <tr>
+            <th><%= f.label :status %><br></th>
+            <td><%= f.text_field :status %></td>
+          </tr>
+      <% else %>
+          <%= f.hidden_field :status, :value => "incomplete" %>
+      <% end %>
     </table>
     <%= f.hidden_field :user_id, :value => User.find_by_username(session[:cas_user].to_s).id %>
     <div class="actions">

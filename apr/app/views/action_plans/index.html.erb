@@ -4,36 +4,38 @@
 
 <h1>Listing Action Plans</h1>
 
-<table class= "table table-striped">
+<table class="table table-striped">
   <thead>
-    <tr>
-      <th>Unit</th>
-      <th>Date of site visit</th>
-      <!--<th>Submission or update</th>-->
-      <!--<th>Submission or update date</th>-->
-      <th>Submitter name</th>
-      <th>Submitter title</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Unit</th>
+    <th>Date of site visit</th>
+    <!--<th>Submission or update</th>-->
+    <!--<th>Submission or update date</th>-->
+    <th>Submitter name</th>
+    <th>Submitter title</th>
+    <th>Status</th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% if session[:cas_user].to_s != "" %>
-    <% @action_plans.each do |action_plan| %>
-      <tr>
-        <% if action_plan.unit_id != nil %>
-          <td><%= Unit.find(action_plan.unit_id).unit %></td>
-          <td><%= action_plan.date_of_site_visit %></td>
-          <!--<td><%# action_plan.submission_or_update %></td>-->
-          <!--<td><%# action_plan.submission_or_update_date %></td>-->
-          <td><%= action_plan.submitter_first_name %>, <%= action_plan.submitter_last_name %></td>
-          <td><%= action_plan.submitter_title %></td>
-          <td><%= link_to 'Show', action_plan, class: "btn" %></td>
-          <td><%= link_to 'Edit', edit_action_plan_path(action_plan), class: "btn", style: 'color: purple;' %></td>
-          <td><%= link_to 'Delete', action_plan, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn", style: 'color: red;' %></td>
-        <% end %>
-      </tr>
-    <% end %>
+  <% if session[:cas_user].to_s != "" %>
+      <% @action_plans.each do |action_plan| %>
+          <tr>
+            <% if action_plan.unit_id != nil %>
+                <td><%= Unit.find(action_plan.unit_id).unit %></td>
+                <td><%= action_plan.date_of_site_visit %></td>
+                <!--<td><%# action_plan.submission_or_update %></td>-->
+                <!--<td><%# action_plan.submission_or_update_date %></td>-->
+                <td><%= action_plan.submitter_first_name %>, <%= action_plan.submitter_last_name %></td>
+                <td><%= action_plan.submitter_title %></td>
+                <td><%= action_plan.status %></td>
+                <td><%= link_to 'Show', action_plan, class: "btn" %></td>
+                <td><%= link_to 'Edit', edit_action_plan_path(action_plan), class: "btn", style: 'color: purple;' %></td>
+                <td><%= link_to 'Delete', action_plan, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn", style: 'color: red;', :action_plan_id => action_plan.id %></td>
+            <% end %>
+          </tr>
+      <% end %>
   <% end %>
   </tbody>
 </table>

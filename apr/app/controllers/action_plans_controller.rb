@@ -1,6 +1,17 @@
 class ActionPlansController < ApplicationController
   before_action :set_action_plan, only: [:show, :edit, :update, :destroy]
 
+  def submit_to_apr
+  end
+
+  def submit_confirmed
+    @action_plan_t = ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s))
+    @action_plan_t.update_attribute(:status, 'complete')
+    respond_to do |format|
+      format.html { redirect_to action_plans_s_submit_to_apr_url, notice: 'Submitted to APR successfully. You cannot edit the forms now.' }
+    end
+  end
+
   # GET /action_plans
   # GET /action_plans.json
   def index
@@ -61,9 +72,16 @@ class ActionPlansController < ApplicationController
   # DELETE /action_plans/1
   # DELETE /action_plans/1.json
   def destroy
+    @criterion_details = CriterionDetail.where(["action_plan_id = ?", @action_plan.id])
+    @criterion_details.each do |cd|
+      CriterionSubDetail.destroy_all "criterion_detail_id = #{cd.id}"
+      CriterionFile.destroy_all "criterion_detail_id = #{cd.id}"
+      # CriterionDetail.destroy_all "criterion_detail_id = #{@action_plan.id}"
+      cd.destroy
+    end
     @action_plan.destroy
     respond_to do |format|
-      format.html { redirect_to action_plans_url, notice: 'Action plan was successfully destroyed.' }
+      format.html { redirect_to action_plans_url, notice: 'Action plan and its associated Criterion Details (along with files uploaded) were successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -77,6 +95,7 @@ class ActionPlansController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def action_plan_params
     # params.require(:action_plan).permit(:unit_id, :user_id, :date_of_site_visit, :submission_or_update, :submission_or_update_date, :submitter_first_name, :submitter_last_name, :submitter_title)
-    params.require(:action_plan).permit(:unit_id, :user_id, :date_of_site_visit, :submitter_first_name, :submitter_last_name, :submitter_title)
+    params.require(:action_plan).permit(:unit_id, :user_id, :date_of_site_visit, :submitter_first_name, :submitter_last_name, :submitter_title, :status)
   end
+
 end

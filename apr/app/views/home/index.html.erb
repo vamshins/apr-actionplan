@@ -36,11 +36,16 @@
                   <%# --------- Show Criterions only if Action Plan is created -------------------%>
                   <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).blank? %>
                       <%# --------- Criterion 1 -------------------%>
-                      <% if CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(1).id).blank? then %>
-                          <li><%= link_to("Criterion 1", new_criterion_detail_path(:cr => 1)) %></li>
+                      <% if !ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).status.eql?("complete") then %>
+                          <% if CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(1).id).blank? then %>
+                              <li><%= link_to("Criterion 1", new_criterion_detail_path(:cr => 1)) %></li>
+                          <% else %>
+                              <li><%= link_to("Criterion 1", edit_criterion_detail_path(:id => CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(1).id).id,
+                                                                                        :cr => 1)) %></li>
+                          <% end %>
                       <% else %>
-                          <li><%= link_to("Criterion 1", edit_criterion_detail_path(:id => CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(1).id).id,
-                                                                                    :cr => 1)) %></li>
+                          <li><%= link_to("Criterion 1", criterion_detail_path(:id => CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(1).id).id,
+                                                                                 :cr => 1)) %></li>
                       <% end %>
 
                       <%# --------- Criterion 2 -------------------%>
@@ -106,6 +111,7 @@
                           <li><%= link_to("Criterion 9", edit_criterion_detail_path(:id => CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(9).id).id,
                                                                                     :cr => 9)) %></li>
                       <% end %>
+                      <li><%= link_to "Submit to APR", action_plans_s_submit_to_apr_path %></li>
                   <% end %>
                 </ul>
             <% end %>

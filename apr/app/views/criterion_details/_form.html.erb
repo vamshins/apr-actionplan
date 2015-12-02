@@ -33,14 +33,14 @@
     <% if @criterion.criterion_number == 2 || @criterion.criterion_number == 4 || @criterion.criterion_number == 5 || @criterion.criterion_number == 6 || @criterion.criterion_number == 7 || @criterion.criterion_number == 8 %>
         <div class="field">
           <%= f.label :cd_field1, @criterion.field1 %><br>
-          <%= f.text_area :cd_field1 %>
+          <%= f.text_area :cd_field1, size: "50x5" %>
         </div>
     <% end %>
 
     <% if @criterion.criterion_number == 5 %>
         <div class="field">
           <%= f.label :cd_field2, @criterion.field2 %><br>
-          <%= f.text_area :cd_field2 %>
+          <%= f.text_area :cd_field2, size: "50x5" %>
         </div>
     <% end %>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129024705) do
+ActiveRecord::Schema.define(version: 20151201220750) do
 
   create_table "action_plans", force: :cascade do |t|
     t.date     "date_of_site_visit"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20151129024705) do
     t.string   "submitter_last_name",  limit: 255
     t.integer  "unit_id",              limit: 4
     t.integer  "user_id",              limit: 4
+    t.string   "status",               limit: 255, null: false
   end
 
   add_index "action_plans", ["unit_id"], name: "index_action_plans_on_unit_id", using: :btree

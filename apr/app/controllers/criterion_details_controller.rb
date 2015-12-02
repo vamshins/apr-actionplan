@@ -10,7 +10,12 @@ class CriterionDetailsController < ApplicationController
   # GET /criterion_details/1
   # GET /criterion_details/1.json
   def show
-    @criterion_sub_details = CriterionSubDetail.where(["criterion_detail_id = ?", @criterion_detail.id])
+    criterion_number = params[:cr]
+    @criterion = Criterion.find_by_criterion_number(criterion_number)
+
+    criterion_detail_id = params[:id]
+    @criterion_detail = CriterionDetail.find(criterion_detail_id)
+    # @criterion_sub_details = CriterionSubDetail.where(["criterion_detail_id = ?", @criterion_detail.id])
   end
 
   # GET /criterion_details/new
