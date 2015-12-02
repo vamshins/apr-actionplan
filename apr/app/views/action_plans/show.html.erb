@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Action Plan</h1>
+
 <p>
   <strong>Unit:</strong>
   <%= @action_plan.unit_id %>
@@ -21,6 +23,16 @@
 </p>-->
 
 <p>
+  <strong>Created Date:</strong>
+  <%= @action_plan.created_at.in_time_zone("Mountain Time (US & Canada)") %>
+</p>
+
+<p>
+  <strong>Updated Date:</strong>
+  <%= @action_plan.updated_at.in_time_zone("Mountain Time (US & Canada)") %>
+</p>
+
+<p>
   <strong>Submitter name:</strong>
   <%= @action_plan.submitter_first_name %>, <%= @action_plan.submitter_last_name %>
 </p>
@@ -30,5 +42,26 @@
   <%= @action_plan.submitter_title %>
 </p>
 
-<%= link_to 'Edit', edit_action_plan_path(@action_plan) %> |
-<%= link_to 'Back', action_plans_path %>
+<p>
+  <strong>Status:</strong>
+  <%= @action_plan.status %>
+</p>
+
+<% if true then %>
+    <% user = User.find_by_username(session[:cas_user].to_s) %>
+    <% Criterion.all.each do |criterion| %>
+    <% @criterion = Criterion.find_by_criterion_number(criterion.id)
+       if user.role.eql?("Admin") then
+         @criterion_detail = CriterionDetail.find_by_action_plan_id_and_criterion_id(@action_plan.id, criterion.id)
+       else
+         @criterion_detail = CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(user.id).id, @criterion.id)
+       end
+       %>
+            <%=
+         render template: 'criterion_details/show', :criterion_detail => @criterion_detail %>
+            <%
+       end %>
+<% end %>
+
+<%= link_to 'Edit', edit_action_plan_path(@action_plan), class: "btn btn-primary" %>
+<%= link_to 'Back', action_plans_path, class: "btn btn-primary" %>

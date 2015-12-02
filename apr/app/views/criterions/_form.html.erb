@@ -21,13 +21,14 @@
     </div>
     <div class="field">
       <%= f.label :field1, "Field 1 Text" %><br>
-      <%= f.text_field :field1 %>
+      <%= f.text_area :field1, size: "50x5" %>
     </div>
     <div class="field">
       <%= f.label :field2, "Field 2 Text" %><br>
-      <%= f.text_field :field2 %>
+      <%= f.text_area :field2, size: "50x5" %>
     </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-primary" %>
+    <%= link_to 'Back', criterions_path, class: "btn btn-primary" %>
   </div>
 <% end %>

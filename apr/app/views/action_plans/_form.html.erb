@@ -1,61 +1,73 @@
-<%= form_for(@action_plan) do |f| %>
-    <% if @action_plan.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@action_plan.errors.count, "error") %> prohibited this action_plan from being saved:</h2>
+<br>
+<br>
+<div class="container">
+  <%= form_for(@action_plan, :html => {:class => 'form-horizontal'}) do |f| %>
+      <% if @action_plan.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@action_plan.errors.count, "error") %> prohibited this action_plan from being
+              saved:</h2>
 
-          <ul>
-            <% @action_plan.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
+            <ul>
+              <% @action_plan.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <div class="form-group">
+        <label class="col-xs-2"><%= f.label :unit %></label>
+
+        <div class="col-xs-10"><%= f.collection_select :unit_id, Unit.all, :id, :unit, prompt: true, :class => "form-control" %>
         </div>
-    <% end %>
+      </div>
 
-    <table>
-      <tr>
-        <th><%= f.label :unit %><br></th>
-        <td><%= f.collection_select :unit_id, Unit.all, :id, :unit, prompt: true %></td>
-      </tr>
-      <tr>
-        <th><%= f.label :date_of_site_visit %><br></th>
-        <td><%= f.date_select :date_of_site_visit %></td>
-      </tr>
-      <!--<tr>
-        <th><%# f.label :submission_or_update %><br/>
-          <%# f.label :submission_or_update, "Submission", :value => "submission" %></th>
-        <td><%# f.radio_button :submission_or_update, "Submission", {:checked => true} %></td>
-      </tr>
-      <tr>
-        <th><%# f.label :submission_or_update, "Update", :value => "update" %></th>
-        <td><%# f.radio_button :submission_or_update, "Update" %></td>
-      </tr>
-      <tr>
-        <th><%# f.label :Date %><br></th>
-        <td><%# f.date_select :submission_or_update_date %></td>
-      </tr>-->
-      <tr>
-        <th><%= f.label :submitter_first_name %><br></th>
-        <td><%= f.text_field :submitter_first_name %></td>
-      </tr>
-      <tr>
-        <th><%= f.label :submitter_last_name %><br></th>
-        <td><%= f.text_field :submitter_last_name %></td>
-      </tr>
-      <tr>
-        <th><%= f.label :submitter_title %><br></th>
-        <td><%= f.text_field :submitter_title %></td>
-      </tr>
+      <div class="form-group">
+        <label class="col-xs-2"><%= f.label :date_of_site_visit %></label>
+
+        <div class="col-xs-10"><%= f.date_select :date_of_site_visit, :class => "form-control" %></div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-xs-2"><%= f.label :submitter_first_name %></label>
+
+        <div class="col-xs-10"><%= f.text_field :submitter_first_name %></div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-xs-2"><%= f.label :submitter_last_name %></label>
+
+        <div class="col-xs-10"><%= f.text_field :submitter_last_name %></div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-xs-2"><%= f.label :submitter_title %></label>
+
+        <div class="col-xs-10"><%= f.text_field :submitter_title %></div>
+      </div>
+
       <% if User.find_by_username(session[:cas_user].to_s).role.eql?("Admin") then %>
-          <tr>
-            <th><%= f.label :status %><br></th>
-            <td><%= f.text_field :status %></td>
-          </tr>
+          <div class="form-group">
+            <label class="col-xs-2"><%= f.label :status %></label>
+
+            <div class="col-xs-10"><%= f.text_field :status %></div>
+          </div>
       <% else %>
           <%= f.hidden_field :status, :value => "incomplete" %>
       <% end %>
-    </table>
-    <%= f.hidden_field :user_id, :value => User.find_by_username(session[:cas_user].to_s).id %>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-<% end %>
+      </table>
+      <% if !User.find_by_username(session[:cas_user].to_s).role.eql?("Admin") then %>
+          <%= f.hidden_field :user_id, :value => User.find_by_username(session[:cas_user].to_s).id %>
+      <% end %>
+      <br>
+      <br>
+
+      <div class="actions">
+        <%= f.submit :class => 'btn btn-primary' %>
+
+      <% if session[:cas_user].to_s.eql?(User.find_by_username(session[:cas_user].to_s).username) && User.find_by_username(session[:cas_user].to_s).role.to_s.eql?("Admin") then %>
+          <%= link_to 'Back', action_plans_path, class: "btn btn-primary" %>
+      <% end %>
+      </div>
+  <% end %>
+</div>

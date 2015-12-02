@@ -1,5 +1,6 @@
 <h1><%= @criterion.criterion_number %> - <%= @criterion.description %></h1>
 
+<% if @criterion_detail.present? then %>
 <br>
 <!--<p>
   <strong>Action plan:</strong>
@@ -44,7 +45,12 @@
   <%= @criterion_detail.comments %>
 </p>
 
-<% crit_detail = CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s)).id, Criterion.find_by_criterion_number(@criterion.criterion_number).id) %>
+<% user = User.find_by_username(session[:cas_user].to_s) %>
+<% if user.role.eql?("Admin") %>
+    <% crit_detail = CriterionDetail.find_by_action_plan_id_and_criterion_id(@action_plan.id, Criterion.find_by_criterion_number(@criterion.criterion_number).id) %>
+<% else %>
+    <% crit_detail = CriterionDetail.find_by_action_plan_id_and_criterion_id(ActionPlan.find_by_user_id(user.id).id, Criterion.find_by_criterion_number(@criterion.criterion_number).id) %>
+<% end %>
 <%# ------------------- Criterion Sub Details and Files-------------------- %>
 <% if !crit_detail.blank? %>
 
@@ -54,6 +60,9 @@
 
     <% @criterion_files = CriterionFile.where(["criterion_detail_id = ?", @criterion_detail.id]) %>
     <%= render template: 'criterion_files/index', :criterion_detail => @criterion_detail %>
+    <% end %>
+<% else %>
+    No details entered for this Criterion.
 <% end %>
 
 <%# link_to 'Edit', edit_criterion_detail_path(@criterion_detail) %>

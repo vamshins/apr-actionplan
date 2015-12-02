@@ -25,7 +25,7 @@
         <td><%= user.role %></td>
         <td><%= link_to 'Show', user, class: "btn" %></td>
         <td><%= link_to 'Edit', edit_user_path(user), class: "btn", style: 'color: purple;' %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn", style: 'color: red;' %></td>
+        <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn", style: 'color: red;' %></td>
       </tr>
     <% end %>
   </tbody>

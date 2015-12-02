@@ -8,7 +8,8 @@ class ActionPlansController < ApplicationController
     @action_plan_t = ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s))
     @action_plan_t.update_attribute(:status, 'complete')
     respond_to do |format|
-      format.html { redirect_to action_plans_s_submit_to_apr_url, notice: 'Submitted to APR successfully. You cannot edit the forms now.' }
+      # format.html { redirect_to action_plans_s_submit_to_apr_url, notice: 'Submitted to APR successfully. You cannot edit the forms now.' }
+      format.html { redirect_to action_plans_s_submit_to_apr_url }
     end
   end
 
@@ -21,6 +22,7 @@ class ActionPlansController < ApplicationController
   # GET /action_plans/1
   # GET /action_plans/1.json
   def show
+
   end
 
   # GET /action_plans/new
