@@ -63,7 +63,7 @@ class CriterionFilesController < ApplicationController
   # DELETE /criterion_files/1.json
   def destroy
     criterion_detail_id = @criterion_file.criterion_detail_id
-    criterion_id = CriterionDetail.find_by_criterion_id(criterion_detail_id).criterion_id
+    criterion_id = CriterionDetail.find(criterion_detail_id).criterion_id
     @criterion_file.destroy
     respond_to do |format|
       # format.html { redirect_to criterion_files_url, notice: 'Criterion file was successfully destroyed.' }
