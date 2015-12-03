@@ -10,7 +10,12 @@ class CriterionDetailsController < ApplicationController
   # GET /criterion_details/1
   # GET /criterion_details/1.json
   def show
-    @criterion_sub_details = CriterionSubDetail.where(["criterion_detail_id = ?", @criterion_detail.id])
+    criterion_number = params[:cr]
+    @criterion = Criterion.find_by_criterion_number(criterion_number)
+
+    criterion_detail_id = params[:id]
+    @criterion_detail = CriterionDetail.find(criterion_detail_id)
+    # @criterion_sub_details = CriterionSubDetail.where(["criterion_detail_id = ?", @criterion_detail.id])
   end
 
   # GET /criterion_details/new
@@ -22,6 +27,11 @@ class CriterionDetailsController < ApplicationController
 
   # GET /criterion_details/1/edit
   def edit
+    if !User.find_by_username(session[:cas_user].to_s).role.eql?("Admin") then
+      if !User.find_by_username(session[:cas_user].to_s).eql?(User.find(@criterion_detail.user_id)) then
+        raise ActionController::RoutingError.new('Criterion detail not found.')
+      end
+    end
     criterion_number = params[:cr]
     @criterion = Criterion.find_by_criterion_number(criterion_number)
   end
@@ -69,13 +79,13 @@ class CriterionDetailsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_criterion_detail
-      @criterion_detail = CriterionDetail.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_criterion_detail
+    @criterion_detail = CriterionDetail.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def criterion_detail_params
-      params.require(:criterion_detail).permit(:action_plan_id, :criterion_id, :cd_date1, :cd_date2, :cd_field1, :cd_field2, :comments)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def criterion_detail_params
+    params.require(:criterion_detail).permit(:user_id, :unit_id, :action_plan_id, :criterion_id, :cd_date1, :cd_date2, :cd_field1, :cd_field2, :comments)
+  end
 end

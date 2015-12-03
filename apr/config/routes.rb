@@ -7,12 +7,18 @@ Rails.application.routes.draw do
   resources :users
   resources :action_plans
   # root 'home#index'
+
   root 'home#instructions'
 
   # get 'home/index'
   get 'home/instructions'
 
   get 'logout' => 'application#logout'
+
+  get 'action_plans/s/submit_to_apr' => 'action_plans#submit_to_apr'
+
+  get 'action_plans/s/submit_confirmed' => 'action_plans#submit_confirmed'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,12 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Units</h1>
+<div>
 
-<table>
+<table class= "table table-striped">
   <thead>
     <tr>
       <th>Unit</th>
       <th>College</th>
+      <th>Action</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,9 +18,9 @@
       <tr>
         <td><%= unit.unit %></td>
         <td><%= unit.college %></td>
-        <td><%= link_to 'Show', unit %></td>
-        <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
-        <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', unit, class: "btn" %></td>
+        <td><%= link_to 'Edit', edit_unit_path(unit), class: "btn", style: 'color: purple;' %></td>
+        <td><%= link_to 'Delete', unit, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn", style: 'color: red;' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +28,5 @@
 
 <br>
 
-<%= link_to 'New Unit', new_unit_path %>
+<%= link_to 'New Unit', new_unit_path, class: "btn btn-primary" %>
+</div>

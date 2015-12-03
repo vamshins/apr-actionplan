@@ -11,19 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125034826) do
+ActiveRecord::Schema.define(version: 20151202184859) do
 
   create_table "action_plans", force: :cascade do |t|
     t.date     "date_of_site_visit"
-    t.string   "submission_or_update",      limit: 255
-    t.date     "submission_or_update_date"
-    t.string   "submitter_first_name",      limit: 255
-    t.string   "submitter_title",           limit: 255
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-    t.string   "submitter_last_name",       limit: 255
-    t.integer  "unit_id",                   limit: 4
-    t.integer  "user_id",                   limit: 4
+    t.string   "submitter_first_name", limit: 255
+    t.string   "submitter_title",      limit: 255
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "submitter_last_name",  limit: 255
+    t.integer  "unit_id",              limit: 4
+    t.integer  "user_id",              limit: 4
+    t.string   "status",               limit: 255, null: false
   end
 
   add_index "action_plans", ["unit_id"], name: "index_action_plans_on_unit_id", using: :btree
@@ -39,10 +38,12 @@ ActiveRecord::Schema.define(version: 20151125034826) do
     t.string   "comments",       limit: 255
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "user_id",        limit: 4
   end
 
   add_index "criterion_details", ["action_plan_id"], name: "index_criterion_details_on_action_plan_id", using: :btree
   add_index "criterion_details", ["criterion_id"], name: "index_criterion_details_on_criterion_id", using: :btree
+  add_index "criterion_details", ["user_id"], name: "index_criterion_details_on_user_id", using: :btree
 
   create_table "criterion_files", force: :cascade do |t|
     t.integer  "criterion_detail_id", limit: 4
@@ -50,9 +51,11 @@ ActiveRecord::Schema.define(version: 20151125034826) do
     t.string   "attachment",          limit: 255
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.integer  "user_id",             limit: 4
   end
 
   add_index "criterion_files", ["criterion_detail_id"], name: "index_criterion_files_on_criterion_detail_id", using: :btree
+  add_index "criterion_files", ["user_id"], name: "index_criterion_files_on_user_id", using: :btree
 
   create_table "criterion_sub_details", force: :cascade do |t|
     t.integer  "criterion_detail_id", limit: 4
@@ -67,9 +70,11 @@ ActiveRecord::Schema.define(version: 20151125034826) do
     t.string   "current_status",      limit: 255
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
+    t.integer  "user_id",             limit: 4
   end
 
   add_index "criterion_sub_details", ["criterion_detail_id"], name: "index_criterion_sub_details_on_criterion_detail_id", using: :btree
+  add_index "criterion_sub_details", ["user_id"], name: "index_criterion_sub_details_on_user_id", using: :btree
 
   create_table "criterions", force: :cascade do |t|
     t.integer  "criterion_number", limit: 4
@@ -95,12 +100,16 @@ ActiveRecord::Schema.define(version: 20151125034826) do
     t.string   "role",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "status",     limit: 255
   end
 
   add_foreign_key "action_plans", "units"
   add_foreign_key "action_plans", "users"
   add_foreign_key "criterion_details", "action_plans"
   add_foreign_key "criterion_details", "criterions"
+  add_foreign_key "criterion_details", "users"
   add_foreign_key "criterion_files", "criterion_details"
+  add_foreign_key "criterion_files", "users"
   add_foreign_key "criterion_sub_details", "criterion_details"
+  add_foreign_key "criterion_sub_details", "users"
 end

@@ -19,6 +19,12 @@ class CriterionSubDetailsController < ApplicationController
 
   # GET /criterion_sub_details/1/edit
   def edit
+    if !User.find_by_username(session[:cas_user].to_s).role.eql?("Admin") then
+      if !User.find_by_username(session[:cas_user].to_s).eql?(User.find(@criterion_sub_detail.user_id)) then
+        raise ActionController::RoutingError.new('Criterion sub details not found.')
+      end
+    end
+    @criterion_detail_id = @criterion_sub_detail.criterion_detail_id
   end
 
   # POST /criterion_sub_details
@@ -28,8 +34,12 @@ class CriterionSubDetailsController < ApplicationController
 
     respond_to do |format|
       if @criterion_sub_detail.save
-        format.html { redirect_to @criterion_sub_detail, notice: 'Criterion sub detail was successfully created.' }
+        # format.html { redirect_to @criterion_sub_detail, notice: 'Criterion sub detail was successfully created.' }
+        criterion_detail_id = @criterion_sub_detail.criterion_detail_id
+        criterion_id = CriterionDetail.find(criterion_detail_id).criterion_id
+        format.html { redirect_to edit_criterion_detail_path(:id => @criterion_sub_detail.criterion_detail_id, :cr => Criterion.find(criterion_id).criterion_number), notice: 'Criterion sub detail was successfully created.' }
         format.json { render :show, status: :created, location: @criterion_sub_detail }
+        format.js { }
       else
         format.html { render :new }
         format.json { render json: @criterion_sub_detail.errors, status: :unprocessable_entity }
@@ -42,7 +52,10 @@ class CriterionSubDetailsController < ApplicationController
   def update
     respond_to do |format|
       if @criterion_sub_detail.update(criterion_sub_detail_params)
-        format.html { redirect_to @criterion_sub_detail, notice: 'Criterion sub detail was successfully updated.' }
+        # format.html { redirect_to @criterion_sub_detail, notice: 'Criterion sub detail was successfully updated.' }
+        criterion_detail_id = @criterion_sub_detail.criterion_detail_id
+        criterion_id = CriterionDetail.find_by_criterion_id(criterion_detail_id).criterion_id
+        format.html { redirect_to edit_criterion_detail_path(:id => @criterion_sub_detail.criterion_detail_id, :cr => Criterion.find(criterion_id).criterion_number), notice: 'Criterion sub detail was successfully updated.' }
         format.json { render :show, status: :ok, location: @criterion_sub_detail }
       else
         format.html { render :edit }
@@ -54,21 +67,24 @@ class CriterionSubDetailsController < ApplicationController
   # DELETE /criterion_sub_details/1
   # DELETE /criterion_sub_details/1.json
   def destroy
+    criterion_detail_id = @criterion_sub_detail.criterion_detail_id
+    criterion_id = CriterionDetail.find(criterion_detail_id).criterion_id
     @criterion_sub_detail.destroy
     respond_to do |format|
-      format.html { redirect_to criterion_sub_details_url, notice: 'Criterion sub detail was successfully destroyed.' }
+      # format.html { redirect_to criterion_sub_details_url, notice: 'Criterion sub detail was successfully destroyed.' }
+      format.html { redirect_to edit_criterion_detail_path(:id => @criterion_sub_detail.criterion_detail_id, :cr => Criterion.find(criterion_id).criterion_number), notice: 'Criterion sub detail was successfully deleted.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_criterion_sub_detail
-      @criterion_sub_detail = CriterionSubDetail.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_criterion_sub_detail
+    @criterion_sub_detail = CriterionSubDetail.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def criterion_sub_detail_params
-      params.require(:criterion_sub_detail).permit(:criterion_detail_id, :action_item, :associated_tasks, :individuals_resp, :other_res_items, :cost_amt, :source_of_funding, :proj_start_date, :target_comp_date, :current_status)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def criterion_sub_detail_params
+    params.require(:criterion_sub_detail).permit(:user_id, :criterion_detail_id, :action_item, :associated_tasks, :individuals_resp, :other_res_items, :cost_amt, :source_of_funding, :proj_start_date, :target_comp_date, :current_status)
+  end
 end

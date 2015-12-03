@@ -19,19 +19,28 @@ class CriterionFilesController < ApplicationController
 
   # GET /criterion_files/1/edit
   def edit
+    if !User.find_by_username(session[:cas_user].to_s).role.eql?("Admin") then
+      if !User.find_by_username(session[:cas_user].to_s).eql?(User.find(@criterion_file.user_id)) then
+        raise ActionController::RoutingError.new('Criterion file not found.')
+      end
+    end
   end
 
   # POST /criterion_files
   # POST /criterion_files.json
   def create
     @criterion_file = CriterionFile.new(criterion_file_params)
+    criterion_detail_id = @criterion_file.criterion_detail_id
+    criterion_id = CriterionDetail.find(criterion_detail_id).criterion_id
 
     respond_to do |format|
       if @criterion_file.save
-        format.html { redirect_to @criterion_file, notice: 'Criterion file was successfully created.' }
+        # format.html { redirect_to @criterion_file, notice: 'Criterion file was successfully created.' }
+        format.html { redirect_to edit_criterion_detail_path(:id => @criterion_file.criterion_detail_id, :cr => Criterion.find(criterion_id).criterion_number), notice: 'File uploaded successfully.' }
         format.json { render :show, status: :created, location: @criterion_file }
       else
-        format.html { render :new }
+        # format.html { render :new }
+        format.html { redirect_to edit_criterion_detail_path(:id => @criterion_file.criterion_detail_id, :cr => Criterion.find(criterion_id).criterion_number), notice: 'File not uploaded. Only .pdf .doc .docx .xls .xlsx documents can be uploaded.' }
         format.json { render json: @criterion_file.errors, status: :unprocessable_entity }
       end
     end
@@ -54,21 +63,24 @@ class CriterionFilesController < ApplicationController
   # DELETE /criterion_files/1
   # DELETE /criterion_files/1.json
   def destroy
+    criterion_detail_id = @criterion_file.criterion_detail_id
+    criterion_id = CriterionDetail.find(criterion_detail_id).criterion_id
     @criterion_file.destroy
     respond_to do |format|
-      format.html { redirect_to criterion_files_url, notice: 'Criterion file was successfully destroyed.' }
+      # format.html { redirect_to criterion_files_url, notice: 'Criterion file was successfully destroyed.' }
+      format.html { redirect_to edit_criterion_detail_path(:id => @criterion_file.criterion_detail_id, :cr => Criterion.find(criterion_id).criterion_number), notice: 'File deleted successfully.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_criterion_file
-      @criterion_file = CriterionFile.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_criterion_file
+    @criterion_file = CriterionFile.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def criterion_file_params
-      params.require(:criterion_file).permit(:criterion_detail_id, :name, :attachment)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def criterion_file_params
+    params.require(:criterion_file).permit(:user_id, :unit_id, :criterion_detail_id, :name, :attachment)
+  end
 end

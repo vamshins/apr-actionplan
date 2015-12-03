@@ -1,0 +1,44 @@
+<% user = User.find_by_username(session[:cas_user].to_s) %>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <!--<th>Criterion detail</th>-->
+    <th>Action Item</th>
+    <th>Associated Tasks</th>
+    <th>Individual(s) Responsible</th>
+    <th>Other Resources/Items</th>
+    <th>$ Cost Amount (if applicable)</th>
+    <th>Source of Funding</th>
+    <th>Projected Start Date</th>
+    <th>Target Date for Completion</th>
+    <th>Current status as of <%= Time.now.strftime("%m/%d/%Y") %></th>
+    <% if !user.role.eql?("Admin") %>
+        <% if !ActionPlan.find_by_user_id(user.id).status.eql?("Complete") then %>
+            <th>Action</th>
+        <% end %>
+    <% end %>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @criterion_sub_detail.action_item %></td>
+        <td><%= @criterion_sub_detail.associated_tasks %></td>
+        <td><%= @criterion_sub_detail.individuals_resp %></td>
+        <td><%= @criterion_sub_detail.other_res_items %></td>
+        <td><%= @criterion_sub_detail.cost_amt %></td>
+        <td><%= @criterion_sub_detail.source_of_funding %></td>
+        <td><%= @criterion_sub_detail.proj_start_date %></td>
+        <td><%= @criterion_sub_detail.target_comp_date %></td>
+        <td><%= @criterion_sub_detail.current_status %></td>
+        <% if !user.role.eql?("Admin") %>
+            <% if !ActionPlan.find_by_user_id(user.id).status.eql?("Complete") then %>
+                <td><%= link_to 'Edit', edit_criterion_sub_detail_path(@criterion_sub_detail), class: "btn", style: 'color: purple;' %></td>
+                <td><%= link_to 'Delete', @criterion_sub_detail, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn", style: 'color: red;' %></td>
+            <% end %>
+        <% end %>
+      </tr>
+  </tbody>
+</table>
