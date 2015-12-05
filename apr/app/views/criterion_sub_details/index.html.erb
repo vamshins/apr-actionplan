@@ -5,15 +5,15 @@
   <thead>
     <tr>
       <!--<th>Criterion detail</th>-->
-      <th>Action item</th>
-      <th>Associated tasks</th>
-      <th>Individuals resp</th>
-      <th>Other res items</th>
-      <th>Cost amt</th>
-      <th>Source of funding</th>
-      <th>Proj start date</th>
-      <th>Target comp date</th>
-      <th>Current status</th>
+      <th>Action Item</th>
+      <th>Associated Tasks</th>
+      <th>Individual(s) Responsible</th>
+      <th>Other Resources / Items</th>
+      <th>Cost Amount</th>
+      <th>Source of Funding</th>
+      <th>Project Start Date</th>
+      <th>Target Completion date</th>
+      <th>Current Status</th>
       <th>Action</th>
       <th colspan="2"></th>
     </tr>
@@ -33,12 +33,25 @@
         <td><%= criterion_sub_detail.target_comp_date %></td>
         <td><%= criterion_sub_detail.current_status %></td>
         <!--<td><%# link_to 'Show', criterion_sub_detail %></td>-->
-        <td><%= link_to 'Edit', edit_criterion_sub_detail_path(criterion_sub_detail), class: "btn", style: 'color: purple;' %></td>
-        <td><%= link_to 'Delete', criterion_sub_detail, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn", style: 'color: red;' %></td>
+
+        <!-- Buttons for Edit and Delete; Hover-over functionality is enabled -->
+        <td><%= link_to edit_criterion_sub_detail_path(criterion_sub_detail), {class: "btn btn-primary btn-sm"} do %>
+          <span class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Edit"></span> <% end %>
+        </td>
+        <td><%= link_to criterion_sub_detail, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-sm" do %>
+          <span class="glyphicon glyphicon-remove-sign" data-toggle="tooltip" title="Delete"></span> <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<script>
+  // enables the tooltip
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+</script>
 
 <br>
 

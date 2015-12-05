@@ -43,7 +43,8 @@
 }
 .no-padding
 {
-  padding:0px;
+  padding:0px !important;
+  margin:0px !important;
 }
 .bottom-padding {
   padding-bottom: 10px;
@@ -76,3 +77,4 @@ a.active {
 a:hover {
   color: red;
 }
+
