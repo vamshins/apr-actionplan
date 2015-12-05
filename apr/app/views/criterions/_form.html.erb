@@ -1,20 +1,20 @@
 <%= form_for(@criterion) do |f| %>
-  <% if @criterion.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@criterion.errors.count, "error") %> prohibited this criterion from being saved:</h2>
+    <% if @criterion.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@criterion.errors.count, "error") %> prohibited this criterion from being saved:</h2>
 
-      <ul>
-      <% @criterion.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @criterion.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :criterion_number %><br>
+      <%= f.number_field :criterion_number %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :criterion_number %><br>
-    <%= f.number_field :criterion_number %>
-  </div>
     <div class="field">
       <%= f.label :description %><br>
       <%= f.text_field :description %>
@@ -27,8 +27,14 @@
       <%= f.label :field2, "Field 2 Text" %><br>
       <%= f.text_area :field2, size: "50x5" %>
     </div>
+<<<<<<< HEAD
   <div class="actions">
     <%= f.submit :class => "btn btn-primary" %>
     <%= link_to 'Back', criterions_path, class: "btn btn-primary" %>
   </div>
+=======
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+>>>>>>> 6b1cc1e4d05046eee28c6ef1a66b846d882e812a
 <% end %>

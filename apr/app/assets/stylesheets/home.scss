@@ -43,7 +43,8 @@
 }
 .no-padding
 {
-  padding:0px;
+  padding:0px !important;
+  margin:0px !important;
 }
 .bottom-padding {
   padding-bottom: 10px;
@@ -73,7 +74,14 @@ a.active {
   font-size: 0.9em;
 }
 
+<<<<<<< HEAD
 .form-horizontal .control-label{
   /* text-align:right; */
   text-align:left;
 }
+=======
+a:hover {
+  color: red;
+}
+
+>>>>>>> 6b1cc1e4d05046eee28c6ef1a66b846d882e812a

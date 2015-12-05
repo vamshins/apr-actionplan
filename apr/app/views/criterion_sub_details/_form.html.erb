@@ -1,4 +1,8 @@
 <%= form_for(@criterion_sub_detail) do |f| %>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6b1cc1e4d05046eee28c6ef1a66b846d882e812a
     <% if @criterion_sub_detail.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@criterion_sub_detail.errors.count, "error") %> prohibited this criterion_sub_detail from
@@ -12,6 +16,7 @@
         </div>
     <% end %>
 
+<<<<<<< HEAD
     <!--<div class="field">
     <%# f.label :criterion_detail_id %><br>
     <%# f.text_field :criterion_detail_id %>
@@ -59,4 +64,76 @@
     <div class="actions">
       <%= f.submit %>
     </div>
+=======
+    <div class="container no-padding">
+
+      <div class="row no-padding">
+        <div class="field">
+          <%= f.hidden_field :criterion_detail_id, :value => @criterion_detail.id %>
+        </div>
+        <br>
+        <!-- First column -->
+        <div class="col-md-5 no-padding">
+          <div class="field">
+            <%= f.label :action_item %><br>
+            <%= f.text_field :action_item %>
+          </div>
+
+          <div class="field">
+            <%= f.label :associated_tasks %><br>
+            <%= f.text_field :associated_tasks %>
+          </div>
+
+          <div class="field">
+            <%= f.label :individuals_resp %><br>
+            <%= f.text_field :individuals_resp %>
+          </div>
+
+          <div class="field">
+            <%= f.label :other_res_items %><br>
+            <%= f.text_field :other_res_items %>
+          </div>
+
+          <div class="field">
+            <%= f.label :cost_amt %><br>
+            <%= f.text_field :cost_amt %>
+          </div>
+        </div>
+        <!-- END First column -->
+
+        <!-- Second column -->
+        <div class="col-md-5 no-padding">
+
+          <div class="field">
+            <%= f.label :source_of_funding %><br>
+            <%= f.text_field :source_of_funding %>
+          </div>
+
+          <div class="field bottom-padding">
+            <%= f.label :proj_start_date %><br>
+            <%= f.date_select :proj_start_date %>
+          </div>
+
+          <div class="field bottom-padding">
+            <%= f.label :target_comp_date %><br>
+            <%= f.date_select :target_comp_date %>
+          </div>
+
+          <div class="field bottom-padding">
+            <%= f.label :current_status %><br>
+            <%= f.text_field :current_status %>
+          </div>
+
+          <%= f.hidden_field :user_id, :value => User.find_by_username(session[:cas_user].to_s).id %>
+
+          <div>
+            <%= f.submit class: "btn btn-primary" do %>
+                <span></span> <% end %>
+          </div>
+        </div>
+        <!-- END Second column -->
+
+      </div>
+    </div>
+>>>>>>> 6b1cc1e4d05046eee28c6ef1a66b846d882e812a
 <% end %>
