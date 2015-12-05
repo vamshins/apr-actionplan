@@ -1,16 +1,29 @@
+<!-- Upload Attachment Sections -->
 <%= form_for(@criterion_file) do |f| %>
-  <% if @criterion_file.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@criterion_file.errors.count, "error") %> prohibited this criterion_file from being saved:</h2>
+    <% if @criterion_file.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@criterion_file.errors.count, "error") %> prohibited this criterion_file from being
+            saved:</h2>
 
-      <ul>
-      <% @criterion_file.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @criterion_file.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.hidden_field :criterion_detail_id, :value => @criterion_detail.id %>
     </div>
-  <% end %>
 
+    <!-- Name and Name-text field -->
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
+
+<<<<<<< HEAD
   <div class="field">
     <%= f.hidden_field :criterion_detail_id, :value => @criterion_detail.id %>
   </div>
@@ -23,8 +36,20 @@
     <%= f.label :attachment %><br>(Only .pdf .doc .docx .xls .xlsx documents can be uploaded.)
     <%= f.file_field :attachment %>
   </div>
+=======
+    <!-- Attachment and Attachment-section -->
+    <div class="field">
+      <%= f.label :attachment %><br>
+      <%= f.file_field :attachment %>
+    </div>
+    <br>
+>>>>>>> 6b1cc1e4d05046eee28c6ef1a66b846d882e812a
     <%= f.hidden_field :user_id, :value => User.find_by_username(session[:cas_user].to_s).id %>
-  <div class="actions">
-    <%= f.submit :value => "Upload" %>
-  </div>
+
+    <!--Upload Buttom -->
+    <div class="actions">
+      <%= f.submit class: "btn btn-primary" do %>
+          <span></span> <% end %>
+    </div>
+
 <% end %>

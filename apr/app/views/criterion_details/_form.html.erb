@@ -12,24 +12,22 @@
         </div>
     <% end %>
 
-    <%= f.hidden_field :action_plan_id, :value => ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).id %>
+    <div class="container no-padding">
+      <div class="row no-padding">
 
-    <%= f.hidden_field :criterion_id, :value => @criterion.id %>
+        <!--  -->
+        <div class="col-md-5 no-padding">
+          <%= f.hidden_field :action_plan_id, :value => ActionPlan.find_by_user_id(User.find_by_username(session[:cas_user].to_s).id).id %>
 
-    <% if @criterion.criterion_number == 1 || @criterion.criterion_number == 3 || @criterion.criterion_number == 9 %>
-        <div class="field">
-          <%= f.label :cd_date1, @criterion.field1 %><br>
-          <%= f.date_select :cd_date1 %>
-        </div>
-    <% end %>
+          <%= f.hidden_field :criterion_id, :value => @criterion.id %>
 
-    <% if @criterion.criterion_number == 1 || @criterion.criterion_number == 3 %>
-        <div class="field">
-          <%= f.label :cd_date2, @criterion.field2 %><br>
-          <%= f.date_select :cd_date2 %>
-        </div>
-    <% end %>
+          <% if @criterion.criterion_number == 1 || @criterion.criterion_number == 3 || @criterion.criterion_number == 9 %>
+              <div class="field">
+                <%= f.label :cd_date1, @criterion.field1 %><br>
+                <%= f.date_select :cd_date1 %>
+              </div>
 
+<<<<<<< HEAD
     <% if @criterion.criterion_number == 2 || @criterion.criterion_number == 4 || @criterion.criterion_number == 5 || @criterion.criterion_number == 6 || @criterion.criterion_number == 7 || @criterion.criterion_number == 8 %>
         <div class="field">
           <%= f.label :cd_field1, @criterion.field1 %><br>
@@ -41,17 +39,51 @@
         <div class="field">
           <%= f.label :cd_field2, @criterion.field2 %><br>
           <%= f.text_area :cd_field2, size: "50x5" %>
-        </div>
-    <% end %>
+=======
+          <% end %>
 
-    <div class="field">
-      <%= f.label :comments %><br>
-      <%= f.text_area :comments, size: "50x5" %>
+          <% if @criterion.criterion_number == 1 || @criterion.criterion_number == 3 %>
+              <div class="field">
+                <%= f.label :cd_date2, @criterion.field2 %><br>
+                <%= f.date_select :cd_date2 %>
+              </div>
+          <% end %>
+
+          <% if @criterion.criterion_number == 2 || @criterion.criterion_number == 4 || @criterion.criterion_number == 5 || @criterion.criterion_number == 6 || @criterion.criterion_number == 7 || @criterion.criterion_number == 8 %>
+              <div class="field">
+                <%= f.label :cd_field1, @criterion.field1 %><br>
+                <%= f.text_area :cd_field1, size: "70x5" %>
+              </div>
+          <% end %>
+
+          <% if @criterion.criterion_number == 5 %>
+              <div class="field">
+                <%= f.label :cd_field2, @criterion.field2 %><br>
+                <%= f.text_area :cd_field2, size: "70x5" %>
+              </div>
+          <% end %>
+>>>>>>> 6b1cc1e4d05046eee28c6ef1a66b846d882e812a
+        </div>
+
+        <div class="col-md-5 no-padding">
+          <!-- Comment Field -->
+          <div class="field bottom-padding">
+            <%= f.label :comments %><br>
+            <%= f.text_area :comments, size: "70x5" %>
+          </div>
+
+          <%= f.hidden_field :user_id, :value => User.find_by_username(session[:cas_user].to_s).id %>
+
+          <div class="actions no-padding">
+            <%= f.submit class: "btn btn-primary" do %>
+                <span></span> <% end %>
+          </div>
+        </div>
+      </div>
+      <!-- Horizontal Line -->
+      <hr>
     </div>
-    <%= f.hidden_field :user_id, :value => User.find_by_username(session[:cas_user].to_s).id %>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+
 
 <% end %>
 
@@ -61,6 +93,7 @@
 <% if !crit_detail.blank? %>
 
     <%# @criterion_sub_details = CriterionSubDetail.all %>
+<<<<<<< HEAD
     <% @criterion_sub_details = CriterionSubDetail.where(["criterion_detail_id = ?", @criterion_detail.id]) %>
 
     <%= render template: 'criterion_sub_details/index' %>
@@ -75,4 +108,37 @@
     <%= render template: 'criterion_files/index', :criterion_detail => @criterion_detail %>
     <% @criterion_file = CriterionFile.new %>
     <%= render template: 'criterion_files/new' %>
+=======
+    <div>
+        <!--Subsection Details of Criterions -->
+        <% @criterion_sub_detail = CriterionSubDetail.new %>
+        <%= render template: 'criterion_sub_details/new' %>
+        <%# render :partial => @criterion_detail.criterion_sub_details.reverse %>
+    </div>
+    <hr>
+
+    <div class="container no-padding">
+      <div class="row no-padding">
+        <!-- Download and Upload links -->
+        <div class="col-md-5 no-padding">
+            <% @criterion_files = CriterionFile.where(["criterion_detail_id = ?", @criterion_detail.id]) %>
+            <%= render template: 'criterion_files/index', :criterion_detail => @criterion_detail %>
+        </div>
+        <div class="col-md-5 no-padding">
+            <% @criterion_file = CriterionFile.new %>
+            <%= render template: 'criterion_files/new' %>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10">
+            <!-- This is the data that appears after you click sumbit for all the fields -->
+            <% @criterion_sub_details = CriterionSubDetail.where(["criterion_detail_id = ?", @criterion_detail.id]) %>
+            <%= render template: 'criterion_sub_details/index' %>
+        </div>
+      </div>
+    </div>
+>>>>>>> 6b1cc1e4d05046eee28c6ef1a66b846d882e812a
 <% end %>

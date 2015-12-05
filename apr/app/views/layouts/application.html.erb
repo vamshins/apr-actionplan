@@ -11,15 +11,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<!--<div id="logged-in">-->
-<!--Signed in as <SPAN id="top-username"> <%= session[:cas_user] %></SPAN>. Not you?-->
-<!--<%= link_to("Sign Out", logout_path) %>-->
-<!--</div>-->
-<!--<div id="wrapper">-->
-<!--<div id="head">-->
-<!--<div id="banner">-->
-<!--<img src="/assets/banner.jpg"/>-->
 
+<!-- Navigation Bar -->
 <div class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin: 0px;">
 
   <div class="container-fluid">
@@ -46,17 +39,19 @@
 </div>
 <br><br>
 <!-- Page Header -->
-<div class="page-header no-margin no-padding">
+<div class="page-header no-padding">
   <div class="container">
     <img src="/assets/banner.jpg" class="img-responsive full-width">
   </div>
 </div>
 
+<!-- Main Content -->
 <div id="content">
   <%= render template:'home/index' %>
 </div>
 <br><br>
 
+<!-- Footer -->
 <div id="footer">
   <div class="container">
     <div class="row">
@@ -89,6 +84,11 @@
           <img src="https://webcore.unm.edu/v2/images/unm-transparent-white.png" alt="The University of New Mexico">
         </p>
         <small>
+<<<<<<< HEAD
+=======
+          The University of New Mexico
+          <br>
+>>>>>>> 6b1cc1e4d05046eee28c6ef1a66b846d882e812a
           Albuquerque, NM 87131, (505) 277-0111
           <br>
           New Mexico's Flagship University
@@ -102,6 +102,11 @@
 
 
 <!--
+
+<div id="content">
+  < #%= render template:'home/index' %>
+</div>
+<br><br>4
  <div id="navbar" class="navbar-collapse collapse">
           <#% if session[:cas_user].to_s == User.find_by_username(session[:cas_user].to_s) && User.find_by_username(session[:cas_user].to_s).role.to_s == "Admin" then %>
               <ul class="nav navbar-nav">

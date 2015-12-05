@@ -1,5 +1,25 @@
 <h1>Listing Criterion Sub Details</h1>
 
+<<<<<<< HEAD
+=======
+<table class= "table table-striped">
+  <thead>
+    <tr>
+      <!--<th>Criterion detail</th>-->
+      <th>Action Item</th>
+      <th>Associated Tasks</th>
+      <th>Individual(s) Responsible</th>
+      <th>Other Resources / Items</th>
+      <th>Cost Amount</th>
+      <th>Source of Funding</th>
+      <th>Project Start Date</th>
+      <th>Target Completion date</th>
+      <th>Current Status</th>
+      <th>Action</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+>>>>>>> 6b1cc1e4d05046eee28c6ef1a66b846d882e812a
 
 <% user = User.find_by_username(session[:cas_user].to_s) %>
 
@@ -7,6 +27,7 @@
     <table class="table table-striped">
       <thead>
       <tr>
+<<<<<<< HEAD
         <!--<th>Criterion detail</th>-->
         <th>Action Item</th>
         <th>Associated Tasks</th>
@@ -23,6 +44,27 @@
             <% end %>
         <% end %>
         <th colspan="2"></th>
+=======
+        <!--<td><%# criterion_sub_detail.criterion_detail %></td>-->
+        <td><%= criterion_sub_detail.action_item %></td>
+        <td><%= criterion_sub_detail.associated_tasks %></td>
+        <td><%= criterion_sub_detail.individuals_resp %></td>
+        <td><%= criterion_sub_detail.other_res_items %></td>
+        <td><%= criterion_sub_detail.cost_amt %></td>
+        <td><%= criterion_sub_detail.source_of_funding %></td>
+        <td><%= criterion_sub_detail.proj_start_date %></td>
+        <td><%= criterion_sub_detail.target_comp_date %></td>
+        <td><%= criterion_sub_detail.current_status %></td>
+        <!--<td><%# link_to 'Show', criterion_sub_detail %></td>-->
+
+        <!-- Buttons for Edit and Delete; Hover-over functionality is enabled -->
+        <td><%= link_to edit_criterion_sub_detail_path(criterion_sub_detail), {class: "btn btn-primary btn-sm"} do %>
+          <span class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Edit"></span> <% end %>
+        </td>
+        <td><%= link_to criterion_sub_detail, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-sm" do %>
+          <span class="glyphicon glyphicon-remove-sign" data-toggle="tooltip" title="Delete"></span> <% end %>
+        </td>
+>>>>>>> 6b1cc1e4d05046eee28c6ef1a66b846d882e812a
       </tr>
       </thead>
 
@@ -54,6 +96,13 @@
 <% else %>
     No records.
 <% end %>
+
+<script>
+  // enables the tooltip
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+</script>
 
 <br>
 
