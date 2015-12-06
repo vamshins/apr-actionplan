@@ -74,14 +74,22 @@ a.active {
   font-size: 0.9em;
 }
 
-<<<<<<< HEAD
 .form-horizontal .control-label{
   /* text-align:right; */
   text-align:left;
 }
-=======
+
 a:hover {
   color: red;
 }
 
->>>>>>> 6b1cc1e4d05046eee28c6ef1a66b846d882e812a
+.notice { height: 2.75em; padding: 0.5em; text-align: center; width: 1140px;
+  margin: 0 auto; background: #f50049; color: #000000; }
+
+table {
+  width: 100%;
+  border: 1px solid #e2e2e2;
+}
+th.show-text-area {
+  width: 15%; white-space:pre-wrap;
+}

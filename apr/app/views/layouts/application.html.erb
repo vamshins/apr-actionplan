@@ -44,7 +44,11 @@
     <img src="/assets/banner.jpg" class="img-responsive full-width">
   </div>
 </div>
-
+<% if !flash[:notice].blank? %>
+    <div class="notice">
+      <%= flash[:notice] %>
+    </div>
+<% end %>
 <!-- Main Content -->
 <div id="content">
   <%= render template:'home/index' %>
@@ -84,11 +88,6 @@
           <img src="https://webcore.unm.edu/v2/images/unm-transparent-white.png" alt="The University of New Mexico">
         </p>
         <small>
-<<<<<<< HEAD
-=======
-          The University of New Mexico
-          <br>
->>>>>>> 6b1cc1e4d05046eee28c6ef1a66b846d882e812a
           Albuquerque, NM 87131, (505) 277-0111
           <br>
           New Mexico's Flagship University

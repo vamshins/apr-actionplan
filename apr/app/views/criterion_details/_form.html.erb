@@ -27,19 +27,6 @@
                 <%= f.date_select :cd_date1 %>
               </div>
 
-<<<<<<< HEAD
-    <% if @criterion.criterion_number == 2 || @criterion.criterion_number == 4 || @criterion.criterion_number == 5 || @criterion.criterion_number == 6 || @criterion.criterion_number == 7 || @criterion.criterion_number == 8 %>
-        <div class="field">
-          <%= f.label :cd_field1, @criterion.field1 %><br>
-          <%= f.text_area :cd_field1, size: "50x5" %>
-        </div>
-    <% end %>
-
-    <% if @criterion.criterion_number == 5 %>
-        <div class="field">
-          <%= f.label :cd_field2, @criterion.field2 %><br>
-          <%= f.text_area :cd_field2, size: "50x5" %>
-=======
           <% end %>
 
           <% if @criterion.criterion_number == 1 || @criterion.criterion_number == 3 %>
@@ -62,13 +49,9 @@
                 <%= f.text_area :cd_field2, size: "70x5" %>
               </div>
           <% end %>
->>>>>>> 6b1cc1e4d05046eee28c6ef1a66b846d882e812a
-        </div>
-
-        <div class="col-md-5 no-padding">
           <!-- Comment Field -->
           <div class="field bottom-padding">
-            <%= f.label :comments %><br>
+            <%= f.label :comments, "Criterion #{@criterion.criterion_number} Action Items Narrative/Additional Comments:" %><br>
             <%= f.text_area :comments, size: "70x5" %>
           </div>
 
@@ -92,23 +75,14 @@
 <%# ------------------- Criterion Sub Details and Files-------------------- %>
 <% if !crit_detail.blank? %>
 
-    <%# @criterion_sub_details = CriterionSubDetail.all %>
-<<<<<<< HEAD
-    <% @criterion_sub_details = CriterionSubDetail.where(["criterion_detail_id = ?", @criterion_detail.id]) %>
-
-    <%= render template: 'criterion_sub_details/index' %>
-    <div id="csdsection">
-    </div>
-    <% @criterion_sub_detail = CriterionSubDetail.new %>
-    <%# render template: 'criterion_sub_details/new' %>
-    <%= render 'criterion_sub_details/criterion_sd_under_cd', review: @criterion_detail %>
-    <%# render :partial => @criterion_detail.criterion_sub_details.reverse %>
-
-    <% @criterion_files = CriterionFile.where(["criterion_detail_id = ?", @criterion_detail.id]) %>
-    <%= render template: 'criterion_files/index', :criterion_detail => @criterion_detail %>
-    <% @criterion_file = CriterionFile.new %>
-    <%= render template: 'criterion_files/new' %>
-=======
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10">
+          <!-- This is the data that appears after you click sumbit for all the fields -->
+          <% @criterion_sub_details = CriterionSubDetail.where(["criterion_detail_id = ?", @criterion_detail.id]) %>
+          <%= render template: 'criterion_sub_details/index' %>
+        </div>
+      </div>
     <div>
         <!--Subsection Details of Criterions -->
         <% @criterion_sub_detail = CriterionSubDetail.new %>
@@ -124,21 +98,13 @@
             <% @criterion_files = CriterionFile.where(["criterion_detail_id = ?", @criterion_detail.id]) %>
             <%= render template: 'criterion_files/index', :criterion_detail => @criterion_detail %>
         </div>
-        <div class="col-md-5 no-padding">
-            <% @criterion_file = CriterionFile.new %>
-            <%= render template: 'criterion_files/new' %>
-        </div>
       </div>
+      <div class="col-md-5 no-padding">
+        <% @criterion_file = CriterionFile.new %>
+        <%= render template: 'criterion_files/new' %>
+      </div>
+    </div>
+
     </div>
     <hr>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10">
-            <!-- This is the data that appears after you click sumbit for all the fields -->
-            <% @criterion_sub_details = CriterionSubDetail.where(["criterion_detail_id = ?", @criterion_detail.id]) %>
-            <%= render template: 'criterion_sub_details/index' %>
-        </div>
-      </div>
-    </div>
->>>>>>> 6b1cc1e4d05046eee28c6ef1a66b846d882e812a
 <% end %>

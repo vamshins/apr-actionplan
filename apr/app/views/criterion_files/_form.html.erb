@@ -1,4 +1,5 @@
 <!-- Upload Attachment Sections -->
+<br>
 <%= form_for(@criterion_file) do |f| %>
     <% if @criterion_file.errors.any? %>
         <div id="error_explanation">
@@ -16,40 +17,22 @@
     <div class="field">
       <%= f.hidden_field :criterion_detail_id, :value => @criterion_detail.id %>
     </div>
-
-    <!-- Name and Name-text field -->
     <div class="field">
       <%= f.label :name %><br>
+      <%# f.text_field :name, :value => :attachment.to_s, disabled: true %>
       <%= f.text_field :name %>
     </div>
-
-<<<<<<< HEAD
-  <div class="field">
-    <%= f.hidden_field :criterion_detail_id, :value => @criterion_detail.id %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%# f.text_field :name, :value => :attachment.to_s, disabled: true %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :attachment %><br>(Only .pdf .doc .docx .xls .xlsx documents can be uploaded.)
-    <%= f.file_field :attachment %>
-  </div>
-=======
-    <!-- Attachment and Attachment-section -->
     <div class="field">
-      <%= f.label :attachment %><br>
+      <%= f.label :attachment %><br>(Only .pdf .doc .docx .xls .xlsx documents can be uploaded.)
       <%= f.file_field :attachment %>
     </div>
-    <br>
->>>>>>> 6b1cc1e4d05046eee28c6ef1a66b846d882e812a
     <%= f.hidden_field :user_id, :value => User.find_by_username(session[:cas_user].to_s).id %>
-
+<br>
     <!--Upload Buttom -->
     <div class="actions">
-      <%= f.submit class: "btn btn-primary" do %>
-          <span></span> <% end %>
+      <%= f.submit class: "btn btn-primary", :value => "Upload file" do %>
+          <span></span>
+      <% end %>
     </div>
 
 <% end %>
