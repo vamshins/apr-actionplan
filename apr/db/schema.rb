@@ -15,24 +15,14 @@ ActiveRecord::Schema.define(version: 20151202184859) do
 
   create_table "action_plans", force: :cascade do |t|
     t.date     "date_of_site_visit"
-<<<<<<< HEAD
-    t.string   "submitter_first_name", limit: 255
-    t.string   "submitter_title",      limit: 255
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.string   "submitter_last_name",  limit: 255
-    t.integer  "unit_id",              limit: 4
-    t.integer  "user_id",              limit: 4
-    t.string   "status",               limit: 255, null: false
-=======
     t.string   "submitter_first_name"
     t.string   "submitter_title"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.string   "submitter_last_name"
     t.integer  "unit_id"
     t.integer  "user_id"
->>>>>>> 6b1cc1e4d05046eee28c6ef1a66b846d882e812a
+    t.string   "status",               default: "Incomplete", null: false
   end
 
   add_index "action_plans", ["unit_id"], name: "index_action_plans_on_unit_id"
@@ -103,16 +93,6 @@ ActiveRecord::Schema.define(version: 20151202184859) do
   end
 
   create_table "users", force: :cascade do |t|
-<<<<<<< HEAD
-    t.string   "first_name", limit: 255
-    t.string   "last_name",  limit: 255
-    t.string   "username",   limit: 255
-    t.string   "email",      limit: 255
-    t.string   "role",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "status",     limit: 255
-=======
     t.string   "first_name"
     t.string   "last_name"
     t.string   "username"
@@ -120,7 +100,7 @@ ActiveRecord::Schema.define(version: 20151202184859) do
     t.string   "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
->>>>>>> 6b1cc1e4d05046eee28c6ef1a66b846d882e812a
+    t.string   "status"
   end
 
 end
