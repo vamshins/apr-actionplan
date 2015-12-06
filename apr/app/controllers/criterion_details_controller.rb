@@ -46,6 +46,7 @@ class CriterionDetailsController < ApplicationController
         # format.html { redirect_to @criterion_detail, notice: 'Criterion detail was successfully created.' }
         format.html { redirect_to edit_criterion_detail_path(:id => @criterion_detail.id, :cr => Criterion.find(@criterion_detail.criterion_id).criterion_number), notice: 'Criterion was successfully created.' }
         format.json { render :show, status: :created, location: @criterion_detail }
+        format.js { }
       else
         format.html { render :new }
         format.json { render json: @criterion_detail.errors, status: :unprocessable_entity }

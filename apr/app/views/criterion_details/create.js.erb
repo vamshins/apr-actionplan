@@ -1,0 +1,5 @@
+var new_criterion_detail = $("<%= escape_javascript(render(:partial => @criterion_detail)) %>");
+//console.log(new_criterion_detail);
+$('#csd').append(new_criterion_detail).fadeIn('slow');
+//console.log($('#criterion_detail_<%= @criterion_detail.id %>').fadeIn('slow'));
+$('#new_criterion_detail')[0].reset();

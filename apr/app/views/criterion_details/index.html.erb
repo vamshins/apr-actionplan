@@ -19,8 +19,8 @@
   <tbody>
     <% @criterion_details.each do |criterion_detail| %>
       <tr>
-        <td><%= criterion_detail.action_plan %></td>
-        <td><%= criterion_detail.criterion %></td>
+        <td><%= criterion_detail.action_plan.id %></td>
+        <td><%= criterion_detail.criterion.criterion_number %></td>
         <td><%= criterion_detail.cd_date1 %></td>
         <td><%= criterion_detail.cd_date2 %></td>
         <td><%= criterion_detail.cd_field1 %></td>
@@ -36,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Criterion detail', new_criterion_detail_path %>
+<!--%= link_to 'New Criterion detail', new_criterion_detail_path %>-->
