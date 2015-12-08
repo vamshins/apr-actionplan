@@ -1,14 +1,13 @@
 <%= form_for(@criterion_sub_detail) do |f| %>
     <% if @criterion_sub_detail.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@criterion_sub_detail.errors.count, "error") %> prohibited this criterion_sub_detail from
-            being saved:</h2>
-
-          <ul>
+          <!--<h2><%= pluralize(@criterion_sub_detail.errors.count, "error") %> prohibited this action_plan from being-->
+          <!--saved:</h2>-->
+          <div class="alert alert-danger">
             <% @criterion_sub_detail.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
+                <%= message %><br>
             <% end %>
-          </ul>
+          </div>
         </div>
     <% end %>
 
@@ -23,22 +22,22 @@
         <div class="col-md-5 no-padding">
           <div class="field">
             <%= f.label :action_item, "Action Item" %><br>
-            <%= f.text_area :action_item, size: "50x3" %>
+            <%= f.text_area :action_item, :required => true, size: "50x3" %>
           </div>
 
           <div class="field">
             <%= f.label :associated_tasks, "Associated Tasks" %><br>
-            <%= f.text_area :associated_tasks, size: "50x3" %>
+            <%= f.text_area :associated_tasks, :required => true, size: "50x3" %>
           </div>
 
           <div class="field">
             <%= f.label :individuals_resp, "Individual(s) Responsible" %><br>
-            <%= f.text_area :individuals_resp, size: "50x3" %>
+            <%= f.text_area :individuals_resp, :required => true, size: "50x3" %>
           </div>
 
           <div class="field">
             <%= f.label :other_res_items, "Other Resources/Items" %><br>
-            <%= f.text_area :other_res_items, size: "50x3" %>
+            <%= f.text_area :other_res_items, :required => true, size: "50x3" %>
           </div>
         </div>
         <!-- END First column -->
@@ -52,7 +51,7 @@
           </div>
           <div class="field">
             <%= f.label :source_of_funding, "Source of Funding" %><br>
-            <%= f.text_area :source_of_funding, size: "50x3" %>
+            <%= f.text_area :source_of_funding, :required => true, size: "50x3" %>
           </div>
 
           <div class="field bottom-padding">
@@ -67,7 +66,7 @@
 
           <div class="field bottom-padding">
             <%= f.label :current_status, "Current Status as of #{Time.now.strftime("%m/%d/%Y")}" %><br>
-            <%= f.text_area :current_status, size: "50x3" %>
+            <%= f.text_area :current_status, :required => true, size: "50x3" %>
           </div>
 
           <%= f.hidden_field :user_id, :value => User.find_by_username(session[:cas_user].to_s).id %>

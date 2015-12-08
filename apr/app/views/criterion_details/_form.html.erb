@@ -1,14 +1,13 @@
 <%= form_for(@criterion_detail) do |f| %>
     <% if @criterion_detail.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@criterion_detail.errors.count, "error") %> prohibited this criterion_detail from being
-            saved:</h2>
-
-          <ul>
+          <!--<h2><%= pluralize(@criterion_detail.errors.count, "error") %> prohibited this action_plan from being-->
+          <!--saved:</h2>-->
+          <div class="alert alert-danger">
             <% @criterion_detail.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
+                <%= message %><br>
             <% end %>
-          </ul>
+          </div>
         </div>
     <% end %>
 
