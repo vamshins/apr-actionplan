@@ -4,6 +4,7 @@
 
 <h1>Listing Action Plans</h1>
 
+    <% if @action_plans.present? then %>
 <table class="table table-striped">
   <thead>
   <tr>
@@ -39,6 +40,10 @@
   <% end %>
   </tbody>
 </table>
+    <% else %>
+        <p>No records found.</p>
+    <% end %>
+
 <% else %>
     <br>
     <p>You do not have permissions to view this page.<p>

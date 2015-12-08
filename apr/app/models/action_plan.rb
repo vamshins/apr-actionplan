@@ -19,6 +19,11 @@ class ActionPlan < ActiveRecord::Base
             :inclusion => {:in => ['Complete', 'Incomplete'],
                            :message => "%{value} is not a valid status"}
 
+  TITLE_TYPES = ['Mr', 'Ms', 'Mz.', 'Miss', 'Mrs']
+  validates :submitter_title,
+            :inclusion => {:in => ['Mr', 'Ms', 'Mz.', 'Miss', 'Mrs'],
+                           :message => "%{value} is not a valid title"}
+
   # def del_referenced_data
   #   criterion_detail = CriterionDetail.find_by_action_plan_id(id)
   #   if !criterion_detail.nil?

@@ -41,7 +41,7 @@
       <div class="form-group">
         <label class="col-xs-2"><%= f.label :submitter_title %></label>
 
-        <div class="col-xs-10"><%= f.text_field :submitter_title %></div>
+        <div class="col-xs-10"><%= f.select(:submitter_title, ActionPlan::TITLE_TYPES) %></div>
       </div>
 
       <% if User.find_by_username(session[:cas_user].to_s).role.eql?("Admin") then %>
