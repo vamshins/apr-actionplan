@@ -1,40 +1,42 @@
 <%= form_for(@user) do |f| %>
     <% if @user.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-          <ul>
+          <!--<h2><%= pluralize(@user.errors.count, "error") %> prohibited this action_plan from being-->
+          <!--saved:</h2>-->
+          <div class="alert alert-danger">
             <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
+                <%= message %><br>
             <% end %>
-          </ul>
+          </div>
         </div>
     <% end %>
 
     <div class="field">
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
+      <%= f.label :first_name %><br>
+      <%= f.text_field :first_name, :required => true %>
     </div>
     <div class="field">
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
+      <%= f.label :last_name %><br>
+      <%= f.text_field :last_name, :required => true %>
     </div>
     <div class="field">
-      <%= f.label :username %>
-      <%= f.text_field :username %>
+      <%= f.label :username %><br>
+      <%= f.text_field :username, :required => true %>
     </div>
     <div class="field">
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.label :email %><br>
+      <%= f.text_field :email, :required => true %>
     </div>
     <div class="field">
-      <%= f.label :role %>
+      <%= f.label :role %><br>
       <%= f.select(:role, User::ROLE_TYPES) %>
     </div>
     <div class="field">
-      <%= f.label :status %>
+      <%= f.label :status %><br>
         <%= f.select(:status, User::STATUS_TYPES) %>
     </div>
+    <br>
+    <br>
     <div class="actions">
       <%= f.submit class: "btn btn-primary" %>
 
