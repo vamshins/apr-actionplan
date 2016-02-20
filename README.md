@@ -1,6 +1,9 @@
 # Academic Program Review (APR) - Action Plan
 This is a class project of ECE 495/595: Web Architecture and Cloud Computing
 
+## Final Website Prototype
+https://frozen-dawn-5865.herokuapp.com
+Test Credentials: test/test
 
 ## Fork the repo
 * Navigate to https://github.com/vamshins/apr-actionplan
@@ -92,10 +95,5 @@ rails s
 	
 
 # Contributors
-- [Alan Seciwa](https://www.github.com/aseciwa)
 - [Vamshi Krishna](https://github.com/vamshins)
-- [Magesh Rajasekaran](https://www.github.com)
-- [Sriranjitha Sankar](https://www.github.com)
-- [Sushma Singhi Reddy](https://www.github.com)
-- [Feng Shen](https://www.github.com)
-- [Shiquian Shen](https://www.github.com)
+- [Alan Seciwa](https://www.github.com/aseciwa)
